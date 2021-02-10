@@ -2,8 +2,8 @@
 
 namespace BSHARE\CONTROLLERS;
 
-require $_SERVER['DOCUMENT_ROOT'] . "/Models" . "/Usuario.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/Database" . "/ConnectionDatabase.php";
+require __DIR__ . "/.." . "/Database" . "/ConnectionDatabase.php";
+require __DIR__ . "/.." . "/Models" . "/Usuario.php";
 
 use BSHARE\MODELS\Usuario;
 // use BSHARE\CONNECTION_DATABASE;
