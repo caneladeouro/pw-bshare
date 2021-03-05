@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+  frontend:
+    build:
+      dockerfile: Dockerfile.frontend
+      context: ./frontend/
+    container_name: bshare_application
+    ports:
+      - 3000:80
+    volumes:
+      - ./frontend/:/var/www/html/
+      - ./frontend/config/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./frontend/config/start-apache:/usr/local/bin/start-apache
+    environment:
+      WEBSERVER_HOST: bshare_webservice
+
+  backend:
+    build:
+      dockerfile: Dockerfile.backend
+      context: ./server/
+    container_name: bshare_webservice
+    ports:
+      - 3200:80
+    volumes:
+      - ./server/:/var/www/html/
+      - ./server/config/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./server/config/start-apache:/usr/local/bin/start-apache
+    environment:
+      MYSQL_HOST: bshare_database
+      MYSQL_USER: root
+      MYSQL_PASSWORD: bshare
+      MYSQL_DB: db_bshare
+
+  mysql:
+    image: mysql:8.0.23
+    container_name: bshare_database
+    ports:
+      - 3306:3306
+    volumes:
+      - bshare-database:/var/lib/mysql
+    environment:
+      MYSQL_USER: CANELA
+      MYSQL_PASSWORD: canela
+      MYSQL_ROOT_PASSWORD: bshare
+      MYSQL_DATABASE: db_bshare
+
+volumes:
+  bshare-database:
