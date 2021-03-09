@@ -1,0 +1,13 @@
+{
+    "name": "caneladeouro/bshare-server",
+    "authors": [
+        {
+            "name": "Matheus dos Santos Bonifácio",
+            "email": "caneladeouro10@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^4.7",
+        "slim/psr7": "^1.3"
+    }
+}

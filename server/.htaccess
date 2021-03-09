@@ -1,0 +1,5 @@
+Options +FollowSymLinks
+
+RewriteEngine On
+
+RewriteRule "^(.*)$" "src/server.php" [NC,L]

@@ -1,0 +1,19 @@
+{
+    "name": "bshare-application",
+    "dockerComposeFile": "../docker-compose.yml",
+    "workspaceFolder": "/var/www/html/",
+    "forwardPorts": [
+        3000,
+        3309
+    ],
+    "settings": {
+        "php.executablePath": "/usr/bin/php"
+    },
+    "service": "app",
+	"shutdownAction": "stopCompose",
+	"extensions": [
+		"tabnine.tabnine-vscode",
+		"eamodio.gitlens",
+		"felixfbecker.php-intellisense"
+	],
+}
