@@ -27,12 +27,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!--Stylesheets: 1-Bootstrap, 2-Própria-->
-  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
-  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
   <!--Título-->
-  <title>Nome da Página | BlenderShare</title>
+  <title>Nome da Página | BShare</title>
 </head>
 
 <!--BODY--------------------------------------------------------------------------------------------------->
@@ -42,7 +42,7 @@
     <!--Cabeçalho da página-->
     <!--Logo-->
     <div class="header-container logo-container">
-      <img src="/img/logo-white-full.png" class="logo" />
+      <img src="img/logo-white-full.png" class="logo" />
     </div>
   </header>
 
@@ -71,7 +71,9 @@
         <form action="/site/login" class="cadastro" method="POST">
           <input type="text" name="usuario" id="usuario" placeholder="Usuário" maxlength="50" />
           <br />
-          <input type="password" name="senha" id="senha" placeholder="Senha" maxlength="30" />
+          <input type="password" name="senha" id="senha" placeholder="Senha" maxlength="36" />
+          <br />
+          <input type="password" name="confirmar-senha" id="confirmar-senha" placeholder="Confirmar senha" maxlength="36" />
           <br />
           <input type="text" name="email" id="email" placeholder="E-mail" maxlength="50" />
           <br />
