@@ -1,8 +1,8 @@
 <?php
 
-namespace BSHARE\FRONTEND\ROUTES;
+namespace BShare\FRONTEND\Routes;
 
-use BSHARE\FRONTEND\VALIDATE_AND_INIT_SESSION\Validate;
+use BShare\FRONTEND\VALIDATE_AND_INIT_SESSION\Validate;
 
 require __DIR__ . "/validateAndInitSession.php";
 
