@@ -1,0 +1,54 @@
+/*LAYOUT----------------------------------------------------------------------------------------------------------------*/
+h3{
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+.favoritos{
+    width: 98vw;
+    margin-bottom: 90px;
+    .carousel-indicators{
+        bottom: -23%;
+    }
+}
+
+.novos{
+    width: 98vw;
+    .row{
+        margin-bottom: 30px;
+    }
+}
+.projeto-preview{
+    background-color: var(--bgcolor-complement); //será substituído pela imagem de preview principal do projeto
+    padding: 15px;
+    width: 95%;
+    height: 200px;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 5, 0.2);
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    .projeto-nome{
+        color: var(--textcolor);
+        font-size: 16px;
+        font-weight: 600;
+        margin: 1px;
+        padding: 0;
+    }
+    .projeto-criador{
+        color: var(--primary);
+        font-size: 13px;
+        margin: 1px;
+        padding: 0;
+    }
+    .projeto-tipo{
+        color: var(--textcolor);
+        position: absolute;
+        bottom: 15px;
+        font-size: 13px;
+        margin: 1px;
+        padding: 0;
+        opacity: 80%;
+    }
+}
