@@ -1,10 +1,10 @@
 <?php
 
-namespace BSHARE\WEBSERVER\ROUTES;
+namespace BShare\Webservice\Routes;
 
 require __DIR__ . "/autoload.php";
 
-use BSHARE\WEBSERVER\CONTROLLERS\UserController;
+use BShare\Webservice\Controllers\UserController;
 
 $requestUrl = array_slice(explode("/", $_SERVER['REQUEST_URI']), 1);
 $userController = new UserController();
