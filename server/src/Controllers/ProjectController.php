@@ -1,35 +1,65 @@
 <?php
 
-namespace BSHARE\WEBSERVER\CONTROLLERS;
+namespace BShare\Webservice\Controllers;
 
-require __DIR__ . "/.." . "/autoload.php";
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
-use BSHARE\MODELS\Projeto;
+use BShare\Webservice\Models\Projects;
 
 class ProjectController
 {
-    private Projeto $project;
-    private array $sql;
-
-    public function create()
+    public function create(Request $req, Response $res, array $args)
     {
-        global $db;
+        // Init variables
+        $project = new Projects();
+        $uploaddir = $_SERVER['DOCUMENT_ROOT'] . '/assets/project/';
+        $uploadfile = $uploaddir . basename($_FILES['project']['name']);
+        $data = $_POST + $_FILES;
 
-        $numberRandomProject = mt_rand(1000000, 9999999);
-        $this->project = new Projeto(json_decode(file_get_contents('php://input')));
+        // Getting request body and move to the project object
+        $data = $project->registerProject((object) $data);
 
-        $this->sql[0] = "INSERT INTO tb_projeto VALUE ($numberRandomProject, :title, :fileNameProjectDescription, :criationDate, :projectPrice, :nameProjectFile)";
+        // Insert data into body response
+        $res->getBody()->write(json_encode($data));
 
-        // foreach ($this->project->__get('imagem') as $element) {
-        //     $numberRandomImage = mt_rand(1000000, 9999999);
-        //     array_push($this->sql[1], "INSERT INTO tb_imagem VALUE ($numberRandomImage, $element)");
-        // }
+        // Return object and sucess status
+        return $res;
+    }
 
-        // foreach ($this->project->__get('video') as $element) {
-        //     $numberRandomVideo = mt_rand(1000000, 9999999);
-        //     array_push($this->sql[2], "INSERT INTO tb_imagem VALUE ($numberRandomVideo, $element)");
-        // }
+    public function showAll(Request $req, Response $res, array $args)
+    {
+        // Init variables
+        $project = new Projects();
 
-        echo json_encode($this->sql);
+        // Insert projects into body
+        $res->getBody()->write(json_encode($project->selectAllProjects()));
+
+        // Return response
+        return $res;
+    }
+
+    public function showAllUserProjects(Request $req, Response $res, array $args)
+    {
+        // Init variables
+        $project = new Projects();
+
+        // Insert projects into body
+        $res->getBody()->write(json_encode($project->selectAllProjects("author = '" . $args['userCode'] . "'")));
+
+        // Return response
+        return $res;
+    }
+
+    public function show(Request $req, Response $res, array $args)
+    {
+        // Init variables
+        $project = new Projects();
+
+        // Insert projects into body
+        $res->getBody()->write(json_encode($project->selectAllProjects("code = '" .  $args['projectCode'] . "'")[0]));
+
+        // Return response
+        return $res;
     }
 }
