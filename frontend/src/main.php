@@ -1,6 +1,6 @@
 <?php
 
-namespace BSHARE\FRONTEND;
+namespace BShare\FRONTEND;
 
 require __DIR__ . "/routes.php";
 

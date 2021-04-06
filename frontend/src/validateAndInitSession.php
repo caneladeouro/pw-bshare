@@ -1,6 +1,6 @@
 <?php
 
-namespace BSHARE\FRONTEND\VALIDATE_AND_INIT_SESSION;
+namespace BShare\FRONTEND\VALIDATE_AND_INIT_SESSION;
 
 class Validate
 {
@@ -9,7 +9,7 @@ class Validate
      */
     public static function validateAndInitSession()
     {
-        $host = getenv('WEBSERVER_HOST');
+        $host = getenv('Webservice_HOST');
         $userOurEmail = $_POST['usuario-email'];
         $password = $_POST['senha'];
         $asEmail = false;
@@ -18,26 +18,26 @@ class Validate
             $asEmail = true;
         }
 
-        $callWebserver = curl_init();
+        $callWebservice = curl_init();
 
         // check if you have to use email or name in the request
         if ($asEmail) {
-            curl_setopt($callWebserver, CURLOPT_URL, "http://$host/user/logIn/email/$userOurEmail/$password");
+            curl_setopt($callWebservice, CURLOPT_URL, "http://$host/user/logIn/email/$userOurEmail/$password");
         } else {
-            curl_setopt($callWebserver, CURLOPT_URL, "http://$host/user/logIn/name/$userOurEmail/$password");
+            curl_setopt($callWebservice, CURLOPT_URL, "http://$host/user/logIn/name/$userOurEmail/$password");
         }
 
-        // curl_setopt($callWebserver, CURLOPT_HEADER, true);
-        curl_setopt($callWebserver, CURLOPT_NOBODY, true);
+        // curl_setopt($callWebservice, CURLOPT_HEADER, true);
+        curl_setopt($callWebservice, CURLOPT_NOBODY, true);
 
-        curl_exec($callWebserver);
+        curl_exec($callWebservice);
 
-        if (curl_errno($callWebserver)) {
+        if (curl_errno($callWebservice)) {
             die('Houve um erro ao fazer a requisição ao servidor');
         }
 
-        $httpResponseCode = curl_getinfo($callWebserver, CURLINFO_HTTP_CODE);
-        curl_close($callWebserver);
+        $httpResponseCode = curl_getinfo($callWebservice, CURLINFO_HTTP_CODE);
+        curl_close($callWebservice);
 
         // Check the status of the session and if there is no create new session
         if ($httpResponseCode == 201) {
@@ -62,7 +62,7 @@ class Validate
      */
     public static function registerUser()
     {
-        $host = getenv('WEBSERVER_HOST');
+        $host = getenv('Webservice_HOST');
         $name = $_POST['usuario'];
         $password = $_POST['senha'];
         $email = $_POST['email'];
@@ -91,7 +91,7 @@ class Validate
 
     public static function initSession($uri)
     {
-        $host = getenv('WEBSERVER_HOST');
+        $host = getenv('Webservice_HOST');
 
         if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();

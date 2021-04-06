@@ -1,19 +1,14 @@
 <?php
 
-namespace BSHARE\WEBSERVER\CONTROLLERS;
+namespace BShare\Webservice\Controllers;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Factory\AppFactory;
+use Rakit\Validation\Validator;
 
-use PDOException;
-use Exception;
-
-class RouterException extends Exception
-{
-}
-
-$sql = [];
+use BShare\Webservice\Models\User;
+use BShare\Webservice\Error\ValidateException;
+use BShare\Webservice\Database\Database;
 
 /**
  * Controllers for user
@@ -25,65 +20,39 @@ class UserController
      */
     public function create(Request $req, Response $res, array $args)
     {
-        global $db;
+        // Init variables
+        $user = new User();
+        $validator = new Validator;
+        $data = (array) json_decode(file_get_contents('php://input'));
 
-        $data = json_decode(file_get_contents('php://input'));
-
-        // If exist name or email equal on database don't register user and applies an error
-        if ($db->query("SELECT nm_usuario, nm_email FROM tb_dados_usuario WHERE nm_usuario = '$data->name' OR nm_email = '$data->email';")->rowCount() != 0) {
-            // throw new Exception(["erro" => true, "message" => "Já existe um usuario com email ou nome iguais"]);
-
-            $res = $res->withStatus(406);
-            return $res;
-        }
-
-        $cardUUID = $this->v4();
-        $userUUID = $this->v4();
-        $date = str_replace("-", "/", date('Y-m-d'));
-
-        $db->query("INSERT INTO tb_carrinho VALUE ('$cardUUID', '$date');");
-        $db->query("INSERT INTO tb_usuario VALUE ('$userUUID', null, '$cardUUID')");
-        $sql = $db->prepare("INSERT INTO tb_dados_usuario VALUE ('$userUUID', :name, :password, :email);");
-
-        $sql->execute([
-            "name" => $data->name,
-            "password" => $data->password,
-            "email" => $data->email
+        // Validate json data
+        $validation = $validator->validate($data, [
+            "name" => "required",
+            "password" => "required|min:8",
+            "email" => "required|email"
         ]);
 
-        $res = $res->withStatus(201);
-        $res->getBody()->write(json_encode($data));
+        if ($validation->fails()) {
+            throw new ValidateException(($validation->errors())->firstOfAll());
+        }
+
+        // Insert json data into user object and register user
+        // Insert the result into body response
+        $res->getBody()->write(json_encode($user->registerUser(json_decode(file_get_contents('php://input')))));
+
+        // Return response
         return $res;
     }
 
     // Show one user with informatin of json
     public function show(Request $req, Response $res, array $args)
     {
-        global $db;
+        $user = new User();
+        $emailOurName = $args['data'];
 
-        $data = $args['data'];
-        $sql = "SELECT 
-        tb_dados_usuario.cd_usuario, 
-        tb_dados_usuario.nm_usuario,
-        tb_dados_usuario.nm_email FROM tb_dados_usuario WHERE 
-        tb_dados_usuario.nm_usuario = '$data' OR
-        tb_dados_usuario.nm_email = '$data' OR
-        tb_dados_usuario.cd_usuario = '$data'";
-
-        foreach ($db->query($sql) as $value) {
-            $UserDataDatabase = [
-                "code" => $value["cd_usuario"],
-                "name" => $value['nm_usuario'],
-                "email" => $value['nm_email']
-            ];
-        }
-
-        if (isset($UserDataDatabase)) {
-            $res = $res->withStatus(201);
-            $res->getBody()->write(json_encode($UserDataDatabase));
-        } else {
-            $res = $res->withStatus(406);
-        }
+        $res->getBody()->write(json_encode($user->getUsers(
+            "nm_email = '$emailOurName' OR nm_usuario = '$emailOurName'"
+        )[0]));
 
         return $res;
     }
@@ -93,52 +62,9 @@ class UserController
      */
     public function showAll(Request $req, Response $res, array $args)
     {
-        global $db;
+        $user = new User();
 
-        $sql = "SELECT
-        tb_dados_usuario.cd_usuario,
-        tb_dados_usuario.nm_usuario,
-        tb_dados_usuario.nm_email FROM tb_dados_usuario";
-
-        $data = [];
-        foreach ($db->query($sql) as $value) {
-            array_push($data, [
-                "code" => $value["cd_usuario"],
-                "name" => $value['nm_usuario'],
-                "email" => $value['nm_email']
-            ]);
-        }
-
-        if ($data != []) {
-            $res = $res->withStatus(201);
-            $res->getBody()->write(json_encode($data));
-        } else {
-            $res = $res->withStatus(406);
-        }
-
-        return $res;
-    }
-
-    /**
-     * Login user with name
-     */
-    public function logInWithName(Request $req, Response $res, array $args)
-    {
-        global $db;
-
-        $name = $args['name'];
-        $password = $args['password'];
-
-        $sql = "SELECT tb_dados_usuario.nm_usuario FROM tb_dados_usuario WHERE 
-        tb_dados_usuario.nm_usuario = '$name' AND
-        tb_dados_usuario.cd_senha = '$password'";
-
-        $rows = $db->query($sql)->rowCount();
-        if ($rows != 0) {
-            $res = $res->withStatus(201);
-        } else {
-            $res = $res->withStatus(406);
-        }
+        $res->getBody()->write(json_encode($user->getUsers()));
 
         return $res;
     }
@@ -146,55 +72,31 @@ class UserController
     /**
      * Login user with email
      */
-    public function logInWithEmail(Request $req, Response $res, array $args)
+    public function logIn(Request $req, Response $res, array $args)
     {
-        global $db;
+        // Init variables
+        $validator = new Validator;
+        $data = (array) json_decode(file_get_contents('php://input'));
+        $status = [];
+        $database = new Database('tb_dados_usuario');
 
-        $email = $args['email'];
-        $password = $args['password'];
+        $validation = $validator->validate($data, [
+            "nameOurEmail" => "required",
+            "password" => "required|min:8"
+        ]);
 
-        $sql = "SELECT tb_dados_usuario.nm_usuario FROM tb_dados_usuario WHERE 
-        tb_dados_usuario.nm_email = '$email' AND
-        tb_dados_usuario.cd_senha = '$password'";
-
-        $rows = $db->query($sql)->rowCount();
-        if ($rows != 0) {
-            $res = $res->withStatus(201);
-        } else {
-            $res = $res->withStatus(406);
+        if ($validation->fails()) {
+            throw new ValidateException(($validation->errors())->firstOfAll());
         }
 
+        if (($database->select(["*"], "nm_usuario = '" . $data['nameOurEmail'] . "' OR nm_email = '" . $data['nameOurEmail'] . "' AND cd_senha = '" . hash("sha256", $data['password']) . "'"))->rowCount()) {
+            $status = ["status" => "ok"];
+        } else {
+            $status = ["status" => "error"];
+        }
+
+        $res->getBody()->write(json_encode($status));
+
         return $res;
-    }
-
-    /**
-     * Generate UUID code
-     */
-    private function v4()
-    {
-        return sprintf(
-            '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-
-            // 32 bits for "time_low"
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0xffff),
-
-            // 16 bits for "time_mid"
-            mt_rand(0, 0xffff),
-
-            // 16 bits for "time_hi_and_version",
-            // four most significant bits holds version number 4
-            mt_rand(0, 0x0fff) | 0x4000,
-
-            // 16 bits, 8 bits for "clk_seq_hi_res",
-            // 8 bits for "clk_seq_low",
-            // two most significant bits holds zero and one for variant DCE1.1
-            mt_rand(0, 0x3fff) | 0x8000,
-
-            // 48 bits for "node"
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0xffff)
-        );
     }
 }

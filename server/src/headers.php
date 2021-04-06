@@ -1,6 +1,6 @@
 <?php
 
-namespace BSHARE\WEBSERVER\HEADERS;
+namespace BShare\Webservice\Headers;
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");

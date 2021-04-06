@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.9"
 
 services:
   frontend:
@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile.frontend
       context: ./frontend/
     container_name: bshare_application
+    profiles: ["dev", "dev-frotend"]
     ports:
       - 3000:80
     volumes:
@@ -13,13 +14,16 @@ services:
       - ./frontend/config/000-default.conf:/etc/apache2/sites-available/000-default.conf
       - ./frontend/config/start-apache:/usr/local/bin/start-apache
     environment:
-      WEBSERVER_HOST: bshare_webservice
+      Webservice_HOST: bshare_webservice
 
   backend:
     build:
       dockerfile: Dockerfile.backend
       context: ./server/
     container_name: bshare_webservice
+    profiles: ["dev", "dev-backend"]
+    depends_on:
+      - mysql
     ports:
       - 3200:80
     volumes:
@@ -35,6 +39,7 @@ services:
   mysql:
     image: mysql:8.0.23
     container_name: bshare_database
+    profiles: ["dev", "dev-backend", "deploy"]
     ports:
       - 3309:3306
     volumes:

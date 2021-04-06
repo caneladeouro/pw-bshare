@@ -1,29 +1,33 @@
 <?php
 
-namespace BSHARE\WEBSERVER\CONTROLLERS;
+namespace BShare\Webservice\Controllers;
 
-require __DIR__ . "/.." . "/autoload.php";
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Rakit\Validation\Validator;
 
-use PDOException;
-use PDO;
-
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+use BShare\Webservice\Error\ValidateException;
+use BShare\Webservice\Models\Paste;
 
 class PasteController
 {
-    private array $sql;
-
-    public function addPaste()
+    public function create(Request $req, Response $res, array $args)
     {
-        try {
-            global $db;
-            $id = $_REQUEST['id'];
+        // Init variables
+        $validator = new Validator;
+        $paste = new Paste();
+        $data = json_decode(file_get_contents('php://input'));
 
-            $numberRandomPaste = mt_rand(1000000, 9999999);
+        $validation = $validator->validate((array) $data, [
+            "path" => "required",
+            "user" => "required"
+        ]);
 
-
-            $this->sql[0] = "INSERT INTO tb_pasta VALUES ($numberRandomPaste, )";
-        } catch (PDOException $e) {
+        if ($validation->fails()) {
+            throw new ValidateException(($validation->errors())->firstOfAll());
         }
+
+        $res->getBody()->write(json_encode($paste->registerPaste($data)));
+        return $res;
     }
 }
