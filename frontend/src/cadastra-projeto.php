@@ -3,9 +3,15 @@
 
 <!-- Bootstrap optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <!--HEAD--------------------------------------------------------------------------------------------------->
@@ -38,7 +44,9 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
     <!--Título-->
     <title>Criar Projeto | BShare</title>
 </head>
@@ -57,7 +65,9 @@
         <!--Menu Desktop-->
         <!--pesquisar-->
         <div class="dropdown menu-desktop menu-pesquisar">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search menu-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
+                stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-search menu-icon">
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
@@ -71,7 +81,9 @@
         </div>
         <!--conta-->
         <div class="dropdown menu-desktop menu-conta">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user menu-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none"
+                stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-user menu-icon">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                 <circle cx="12" cy="7" r="4" />
             </svg>
@@ -153,36 +165,43 @@
                             <span class="arquivo-style align-middle">
                                 Importar imagem de preview principal
                             </span>
-                            <input type="file" name="preview-principal" id="preview-principal">
+                            <input type="file" name="preview-principal" id="preview-principal"
+                                accept="image/x-png,image/jpeg">
                         </div>
                         <div class="row editar-previews-secundarias">
                             Importar vídeos e imagens de preview secundários
-                            <div class="col-sm-4 editar-preview-template">
-                                <div class="editar-preview-style">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                            <div class="col-sm-4 editar-preview-template" onclick="previewClick()">
+                                <div class="editar-preview-style preview-secundaria-1" onclick="previewClick()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                        fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-plus">
                                         <line x1="12" y1="5" x2="12" y2="19" />
                                         <line x1="5" y1="12" x2="19" y2="12" />
                                     </svg>
                                 </div>
-                                <input type="file" name="preview-principal" id="preview-principal">
+                                <!--I/V secundária 1111111111111111111111111111111111111111111111111111111111111111111-->
                             </div>
-                            <div class="col-sm-4 editar-preview-template">
-                                <div class="editar-preview-style">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                            <div class="col-sm-4 editar-preview-template preview-secundaria-2" onclick="previewClick()">
+                                <div class="editar-preview-style" onclick="previewClick()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                        fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-plus">
                                         <line x1="12" y1="5" x2="12" y2="19" />
                                         <line x1="5" y1="12" x2="19" y2="12" />
                                     </svg>
                                 </div>
-                                <input type="file" name="preview-principal" id="preview-principal">
+                                <!--I/V secundária 22222222222222222222222222222222222222222222222222222222222222222222-->
                             </div>
-                            <div class="col-sm-4 editar-preview-template">
-                                <div class="editar-preview-style">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                            <div class="col-sm-4 editar-preview-template preview-secundaria-3" onclick="previewClick()">
+                                <div class="editar-preview-style" onclick="previewClick()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                        fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-plus">
                                         <line x1="12" y1="5" x2="12" y2="19" />
                                         <line x1="5" y1="12" x2="19" y2="12" />
                                     </svg>
                                 </div>
-                                <input type="file" name="preview-principal" id="preview-principal">
+                                <!--I/V secundária 3333333333333333333333333333333333333333333333333333333333333333333333-->
                             </div>
                         </div>
                     </div>
@@ -249,6 +268,28 @@
         BShare | Copyright 2021
     </footer>
 
+    <div class="imagem-secundaria-popup hide">
+        <button class="fechar-popup" onclick="popupClose()">
+            X
+        </button>
+        <p>
+            Deseja inserir uma imagem ou vídeo do youtube?
+        </p>
+        <input type="file" name="preview-secundaria" id="preview-secundaria" accept="image/x-png,image/jpeg">
+        ou
+        <button onclick="chooseVideo()">Vídeo</button>
+    </div>
+    <div class="video-popup hide">
+        <button class="fechar-popup" onclick="popupClose()">
+            X
+        </button>
+        <p>
+            Insira um link do youtube:
+        </p>
+        <input type="text" name="preview-video" id="preview-video">
+    </div>
+    <section class="fundo-popup hide">
+    </section>
     <!--VLibras-->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
@@ -263,6 +304,7 @@
 
     <!-- JavaScript próprio-->
     <script src="js/menu.js"></script>
+    <script src="js/preview-image.js"></script>
 </body>
 
 </html>

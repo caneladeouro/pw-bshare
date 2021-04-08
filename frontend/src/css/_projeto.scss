@@ -1,0 +1,35 @@
+/*PROJETO---------------------------------------------------------------------------*/
+
+.projeto-preview-principal {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+    background-color: var(--bgcolor-complement);
+    pointer-events: none;
+    user-select: none;
+}
+
+.previews-secundarias {
+    margin-top: 10px;
+    padding: 0;
+
+    .col-sm-4 {
+        padding: 3px;
+    }
+
+    .projeto-preview-secundaria {
+        background-color: var(--bgcolor-complement);
+        width: 99%;
+        height: 125px;
+        z-index: 99;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .projeto-preview-secundaria-1 {
+        float: left;
+    }
+    .projeto-preview-secundaria-3 {
+        float: right;
+    }
+}
