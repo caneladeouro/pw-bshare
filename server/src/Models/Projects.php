@@ -170,6 +170,7 @@ class Projects
         return array_map(function (Projects $result) {
             // Init the variables
             $image = new Image();
+            $category = new Category();
 
             $result->images = $image->getImages("cd_projeto = '$result->code'");
 
