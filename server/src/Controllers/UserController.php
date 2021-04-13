@@ -77,8 +77,7 @@ class UserController
         // Init variables
         $validator = new Validator;
         $data = (array) json_decode(file_get_contents('php://input'));
-        $status = [];
-        $database = new Database('tb_dados_usuario');
+        $user = new User();
 
         $validation = $validator->validate($data, [
             "nameOurEmail" => "required",
@@ -89,13 +88,14 @@ class UserController
             throw new ValidateException(($validation->errors())->firstOfAll());
         }
 
-        if (($database->select(["*"], "nm_usuario = '" . $data['nameOurEmail'] . "' OR nm_email = '" . $data['nameOurEmail'] . "' AND cd_senha = '" . hash("sha256", $data['password']) . "'"))->rowCount()) {
-            $status = ["status" => "ok"];
-        } else {
-            $status = ["status" => "error"];
-        }
+        $userData = $user->getUsers(
+            "nm_usuario = '" . $data['nameOurEmail'] . "' OR nm_email = '" . $data['nameOurEmail'] . "' AND cd_senha = '" . hash(
+                "sha256",
+                $data['password']
+            ) . "'"
+        );
 
-        $res->getBody()->write(json_encode($status));
+        $res->getBody()->write(json_encode(($userData != null) ? $userData[0] : null));
 
         return $res;
     }
