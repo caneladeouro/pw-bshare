@@ -6,15 +6,18 @@ services:
       dockerfile: Dockerfile.frontend
       context: ./frontend/
     container_name: bshare_application
-    profiles: ["dev", "dev-frotend"]
+    profiles: ["dev", "dev-frontend"]
     ports:
       - 3000:80
     volumes:
-      - ./frontend/:/var/www/html/
+      - ./frontend/:/var/www/
       - ./frontend/config/000-default.conf:/etc/apache2/sites-available/000-default.conf
       - ./frontend/config/start-apache:/usr/local/bin/start-apache
     environment:
       Webservice_HOST: bshare_webservice
+      APP_ENV: development
+      APACHE_RUN_USER: apache-www-volume
+      APACHE_RUN_GROUP: apache-www-volume
 
   backend:
     build:
