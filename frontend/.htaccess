@@ -1,5 +1,0 @@
-Options +FollowSymLinks
-
-RewriteEngine On
-
-RewriteRule "^(.*)$" "src/main.php" [NC,L]
