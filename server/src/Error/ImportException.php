@@ -1,10 +1,10 @@
 <?php
 
-namespace BSHARE\WEBSERVER\ERROR;
+namespace BShare\Webservice\Error;
 
 use Exception;
 
-class ImportException extends Exception
+class ImportException extends SystemException
 {
     public function __construct($message, $code)
     {
