@@ -163,24 +163,13 @@
                             <span class="arquivo-style align-middle">
                                 Importar imagem de preview principal
                             </span>
-<<<<<<< HEAD:frontend/src/cadastra-projeto.php
-                            <input type="file" name="preview-principal" id="preview-principal"
-                                accept="image/x-png,image/jpeg">
-=======
                             <input type="file" name="mainImage" id="preview-principal" accept="image/x-png,image/jpeg">
->>>>>>> 93b8695121c6acb5a53b81d824429e7c4b593f10:frontend/resources/views/cadastra-projeto.blade.php
                         </div>
                         <div class="row editar-previews-secundarias">
                             Importar vídeos e imagens de preview secundários
                             <div class="col-sm-4 editar-preview-template" onclick="previewClick()">
                                 <div class="editar-preview-style preview-secundaria-1" onclick="previewClick()">
-<<<<<<< HEAD:frontend/src/cadastra-projeto.php
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
-                                        fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round"
-                                        stroke-linejoin="round" class="feather feather-plus">
-=======
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
->>>>>>> 93b8695121c6acb5a53b81d824429e7c4b593f10:frontend/resources/views/cadastra-projeto.blade.php
                                         <line x1="12" y1="5" x2="12" y2="19" />
                                         <line x1="5" y1="12" x2="19" y2="12" />
                                     </svg>
@@ -189,13 +178,7 @@
                             </div>
                             <div class="col-sm-4 editar-preview-template preview-secundaria-2" onclick="previewClick()">
                                 <div class="editar-preview-style" onclick="previewClick()">
-<<<<<<< HEAD:frontend/src/cadastra-projeto.php
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
-                                        fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round"
-                                        stroke-linejoin="round" class="feather feather-plus">
-=======
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
->>>>>>> 93b8695121c6acb5a53b81d824429e7c4b593f10:frontend/resources/views/cadastra-projeto.blade.php
                                         <line x1="12" y1="5" x2="12" y2="19" />
                                         <line x1="5" y1="12" x2="19" y2="12" />
                                     </svg>
@@ -204,13 +187,7 @@
                             </div>
                             <div class="col-sm-4 editar-preview-template preview-secundaria-3" onclick="previewClick()">
                                 <div class="editar-preview-style" onclick="previewClick()">
-<<<<<<< HEAD:frontend/src/cadastra-projeto.php
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
-                                        fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round"
-                                        stroke-linejoin="round" class="feather feather-plus">
-=======
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
->>>>>>> 93b8695121c6acb5a53b81d824429e7c4b593f10:frontend/resources/views/cadastra-projeto.blade.php
                                         <line x1="12" y1="5" x2="12" y2="19" />
                                         <line x1="5" y1="12" x2="19" y2="12" />
                                     </svg>
