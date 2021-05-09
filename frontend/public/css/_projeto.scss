@@ -1,1 +1,32 @@
 /*PROJETO---------------------------------------------------------------------------*/
+.projetoPreview{
+    background-color: var(--bgcolor-complement);
+    width: 100%;
+    height: 480px;
+}
+
+.nomeProjeto{
+    position: relative;
+    .feather-alert-triangle{
+        position: absolute;
+        right: 0;
+    }
+}
+
+.projetoDownload{
+    width: 100%;
+}
+
+.projetoTags{
+    margin-top: 15px;
+}
+.projetoDescricao{
+    margin-top: 15px;
+    text-overflow: clip;
+}
+
+.projetoPreviewSecundaria{
+    background-color: var(--bgcolor-complement);
+    width: 100%;
+    height: 160px;
+}

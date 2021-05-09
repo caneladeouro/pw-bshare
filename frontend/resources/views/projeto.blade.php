@@ -146,19 +146,63 @@
     <!-- O código resposável pelo main está no -->
     <main>
         <div class="row">
-            <div class="cl-sm-8">
+            <div class="col-sm-8">
                 <!--Preview de Projeto e Comentários-->
                 <div class="row">
-                    <h4>Criador do Projeto</h4> <br>
-                    <h3>Nome do Projeto</h3>
+                    <h6>Criador do Projeto</h6>
+                </div>
+                <div class="row nomeProjeto">
+                <h4>Nome do Projeto</h4>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--textcolor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                 </div>
+                <div class="projetoPreviews">
+                <div class="row">
+                    <div class="projetoPreview">
+
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-4" style="padding-left: 0;">
+                        <div class="projetoPreviewSecundaria projetoPreviewSecundaria1">
+
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="projetoPreviewSecundaria projetoPreviewSecundaria2">
+                            
+                        </div>
+                    </div>
+                    <div class="col-4" style="padding-right: 0;">
+                        <div class="projetoPreviewSecundaria projetoPreviewSecundaria3">
+                            
+                        </div>
+                    </div>
+                </div>
+                </div>
+            
                 
                 <!--Preview de Projeto e Comentários-->
             </div>
-            <div class="cl-sm-4">
+            <div class="col-sm-4" style="margin-top: 64px;">
                 <!--Informações do Projeto e Download-->
-
+                <button class="projetoDownload"><h2>Download</h2></button>
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-sm-4" style="padding: 0; text-align: center;">
+                        Categoria
+                    </div>
+                    <div class="col-sm-4" style="padding: 0; text-align: center;">
+                        Versão do Blender
+                    </div>
+                    <div class="col-sm-4" style="padding: 0; text-align: center;">
+                        Render Engine
+                    </div>
+                </div>
+                <div class="projetoTags">
+                    tag, tag, tag
+                </div>
+                <div class="projetoDescricao">
+                    Descrição aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </div>
                 <!--Informações do Projeto e Download-->
             </div>
         </div>

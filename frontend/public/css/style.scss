@@ -4,6 +4,8 @@ body {
   width: 100vw;
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
+
+  word-wrap: break-word
 }
 
 .display {
@@ -159,10 +161,11 @@ button:focus {
   outline: none;
 }
 
-.main {
-  margin-top: 115px;
+main {
+  margin-top: 85px;
   width: 100%;
   margin-bottom: 100px;
+  padding: 20px
 }
 
 @import "./variables";
