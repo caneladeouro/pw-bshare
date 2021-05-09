@@ -179,13 +179,53 @@
                     </div>
                 </div>
                 </div>
-            
+                <div class="row" style="margin-top: 15px;">
+                    Data que Projeto foi Postado
+
+                    <!--Só deve aparecer quando o projeto foi postado pela conta na qual o usuário está ligado-->
+                    <div class="projetoEditar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--textcolor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+                        Editar 
+                    </div>
+                    <!--Só deve aparecer quando o projeto foi postado pela conta na qual o usuário está ligado-->
+                </div>
+
+                <!--Só deve aparecer quando o usuário está logado-->
+                <div class="projetoComentarios">
+                    <div class="projetoComentario projetoComentar" style="margin-bottom: 30px;">
+                        <div class="projetoComentarioImgdePerfil">
+
+                        </div>
+                        <textarea name="comentar" id="comentar" rows="3" class="projetoComentarInput"></textarea>
+                        <button class="projetoComentarBotao">Comentar</button>
+                    </div>
+                <!--Só deve aparecer quando o usuário está logado-->
+
+                    Comentários:
+                    <div class="projetoComentario projetoComentar" style="margin-top: 15px;">
+                        <div class="projetoComentarioImgdePerfil">
+
+                        </div>
+                        <span class="ProjetoComentarioConteudo">
+                            Comentário
+                        </span>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--textcolor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                </div>
                 
                 <!--Preview de Projeto e Comentários-->
             </div>
             <div class="col-sm-4" style="margin-top: 64px;">
                 <!--Informações do Projeto e Download-->
-                <button class="projetoDownload"><h2>Download</h2></button>
+                <div class="row">
+                    <div class="col-7">
+                        <button class="projetoDownload"><h2 style="font-weight: 300;">Download</h2></button>
+                    </div>
+                    <div class="col-5">
+                        N° de Downloads: XXX
+                    </div>
+                </div>
                 <div class="row" style="margin-top: 15px;">
                     <div class="col-sm-4" style="padding: 0; text-align: center;">
                         Categoria
