@@ -32,7 +32,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" />
   <!--Título-->
-  <title>Nome da Página | BShare</title>
+  <title>Login & Cadastro | BShare</title>
 </head>
 
 <!--BODY--------------------------------------------------------------------------------------------------->
@@ -79,7 +79,7 @@
           <br />
           <input type="text" name="email" id="email" placeholder="E-mail" maxlength="50" required />
           <br />
-          <input onclick="validateRegister()" value="Cadastrar" class="submit" />
+          <input onclick="validateRegister()" value="Cadastrar" class="submit" type="submit" />
         </form>
       </div>
     </div>

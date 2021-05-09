@@ -18,6 +18,7 @@ services:
       APP_ENV: development
       APACHE_RUN_USER: apache-www-volume
       APACHE_RUN_GROUP: apache-www-volume
+      APP_KEY: SomeRandomStringToAddSecurity123
 
   backend:
     build:
