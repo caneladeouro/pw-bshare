@@ -7,7 +7,6 @@ COPY ./config/start-apache /usr/local/bin/start-apache
 # COPY /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 
 RUN chmod -R 777 /var/www/html/assets/img/
-RUN chmod -R 777 /var/www/html/assets/video/
 RUN chmod -R 777 /var/www/html/assets/project/
 
 RUN a2enmod rewrite
