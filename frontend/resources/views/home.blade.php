@@ -192,25 +192,7 @@ HOME | BShare
             <h3>Projetos Novos</h3>
             <div class="row">
                 <!--cada um desses eh o preview de um projeto diferente-->
-                @foreach (array_slice($data, 0, 4) as $project)
-                <div class="col-sm-3">
-                    <a href="#">
-                        <div class="projeto-preview">
-                            <p class="projeto-nome">
-                                {{ $project->title }}
-                            </p>
-                            <a href="">
-                                <p class="projeto-criador">
-                                    Criador do projeto
-                                </p>
-                            </a>
-                            <p class="projeto-tipo">
-                                {{ $project->category }}
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                @endforeach
+ 
             </div>
         </div>
     </main>

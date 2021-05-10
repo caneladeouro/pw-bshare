@@ -26,7 +26,7 @@ class PageController extends Controller
 
             // If not exist from server display the projects
             if ($info['http_code'] == 200) {
-                return view('home', ["data" => $result]);
+                return view('home', ["data" => [$result]]);
             } else {
                 abort(500);
             }
@@ -42,6 +42,16 @@ class PageController extends Controller
         } else {
             return redirect('/');
         }
+    }
+
+    public function projeto()
+    {
+        return view('projeto');
+    }
+
+    public function pesquisa()
+    {
+        return view('pesquisa');
     }
 
     public function login()
