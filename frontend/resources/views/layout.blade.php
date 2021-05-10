@@ -137,7 +137,9 @@
         </header>
     </section>
 
-    @yield('content')
+    <main>
+        @yield('content')
+    </main>
 
     <!--Rodapé da página-->
     <section>
