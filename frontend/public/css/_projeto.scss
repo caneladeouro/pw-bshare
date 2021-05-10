@@ -22,12 +22,12 @@
 
 .projetoPreviews{
     .projetoPreview{
-        background-color: var(--bgcolor-complement);
+        background-color: var(--bgcolor-complement); //Deve ser apresentado como a imagem de preview principal que o suário definiu.
         width: 100%;
         height: 480px;
     }
     .projetoPreviewSecundaria{
-        background-color: var(--bgcolor-complement);
+        background-color: var(--bgcolor-complement);  //Deve ser apresentado como as imagens de preview secundarias que o suário definiu.
         width: 100%;
         height: 160px;
     }    
@@ -67,7 +67,7 @@
             transform: translateY(-50%);
             width: 60px;
             height: 60px;
-            background-color: var(--bgcolor-body);
+            background-color: var(--bgcolor-body); //Deve ser apresentado como a imagem de perfil que o suário definiu.
             border-radius: 99999px;
 
         }

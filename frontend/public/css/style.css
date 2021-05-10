@@ -166,7 +166,6 @@ main {
   margin-top: 85px;
   width: 100%;
   margin-bottom: 100px;
-  padding: 20px;
 }
 
 :root {
@@ -869,6 +868,32 @@ h3 {
 
 .pesquisaResultados {
   margin-top: 30px;
+}
+
+/*SHOW USER------------------------------------------------------*/
+.showUserCapa {
+  min-height: 220px;
+  background-color: var(--bgcolor-complement);
+  position: relative;
+  padding: 20px;
+}
+
+.showUserCapa .showUserImagem {
+  height: 160px;
+  width: 160px;
+  background-color: var(--bgcolor-body);
+  border-radius: 99999px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.showUserCapa .showUserFollow {
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--textcolor);
+}
+
+.showUserConteudo {
+  padding: 20px;
 }
 
 /*FOOTER------------------------------------------------------*/
