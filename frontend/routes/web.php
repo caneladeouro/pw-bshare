@@ -20,6 +20,7 @@ Route::get('/', [PageController::class, 'home']);
 // User
 Route::get('/login', [PageController::class, 'login']);
 Route::get('/logoff', [PageController::class, 'logoff']);
+Route::get('/myself', [PageController::class, 'showUser']);
 Route::post('/login', [PageController::class, 'verifyUser']);
 Route::post('/signUser', [PageController::class, 'storageUser']);
 

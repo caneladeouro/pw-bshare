@@ -190,4 +190,33 @@ class PageController extends Controller
             abort(500);
         }
     }
+
+    public function showUser()
+    {
+        // return view('show-user', ["data" => session()->get('user')]);
+        return view('show-user', ["data" => (object) [
+            "username" => "Matheus Farbiano",
+            "email" => "matheus.test01@gmail.com",
+            "biografy" => "Clita ut aliquyam est labore justo eirmod accusam no sea sanctus, lorem magna et vero justo sit stet diam amet, gubergren consetetur diam sanctus stet consetetur, dolor consetetur dolor amet justo, no sed magna vero diam est consetetur rebum tempor, amet vero voluptua lorem sadipscing ut, lorem eirmod et eos.",
+            "created_projects" => [
+                (object) [
+                    "title" => "first-project",
+                    "category" => (object) [
+                        "id" => "test",
+                        "category" => "contruction"
+                    ],
+                    "author" => (object) [
+                        "id" => "test",
+                        "username" => "Matheus Farbiano"
+                    ]
+                ]
+            ],
+            "folders" => [
+                (object) [
+                    "id" => "test",
+                    "path" => "first-projects"
+                ]
+            ]
+        ]]);
+    }
 }
