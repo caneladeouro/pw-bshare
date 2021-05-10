@@ -46,11 +46,15 @@
     <!-- Header -->
     <section>
         <header>
+            @section('logo')
             <!--Cabeçalho da página-->
             <!--Logo-->
             <div class="header-container logo-container">
                 <img src="img/logo-white-full.png" class="logo">
             </div>
+            @show
+
+            @section('navbar')
             <!--Menu Desktop-->
             <!--pesquisar-->
             <div class="dropdown menu-desktop menu-pesquisar">
@@ -129,7 +133,7 @@
 
                 </form>
             </div>
-            </div>
+            @show
         </header>
     </section>
 
