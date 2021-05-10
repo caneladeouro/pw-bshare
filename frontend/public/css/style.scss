@@ -168,6 +168,7 @@ main {
   padding: 20px
 }
 
+//Importar arquivos _.scss
 @import "./variables";
 
 @import "./header";
@@ -176,5 +177,6 @@ main {
 @import "./layout";
 @import "./cadastra-projeto";
 @import "./projeto";
+@import "./pesquisa";
 
 @import "./footer";

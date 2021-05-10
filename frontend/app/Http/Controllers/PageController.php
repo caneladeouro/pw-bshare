@@ -49,6 +49,11 @@ class PageController extends Controller
         return view('projeto');
     }
 
+    public function pesquisa()
+    {
+        return view('pesquisa');
+    }
+
     public function login()
     {
         if (!session()->exists('user')) {
