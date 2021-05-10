@@ -55,6 +55,7 @@ MYSELF | BShare
             </div>
 
             <div>
+                @isset($data->created_projects)
                 @foreach(array_slice($data->created_projects, 0, 4) as $created_project)
                 <div class="col-sm-3">
                     <a href="#">
@@ -74,6 +75,7 @@ MYSELF | BShare
                     </a>
                 </div>
                 @endforeach
+                @endisset
             </div>
         </div>
 
