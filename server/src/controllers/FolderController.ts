@@ -13,6 +13,18 @@ class FolderController {
       return res.status(500);
     }
   }
+
+  async showAllByUser(req: Request, res: Response) {
+    try {
+      const { user_id } = req.params;
+      const folderService = new FolderService();
+      const folders = await folderService.showAllByUser(user_id);
+
+      return res.status(200).json(folders);
+    } catch (err) {
+      return res.status(500);
+    }
+  }
 }
 
 export { FolderController };
