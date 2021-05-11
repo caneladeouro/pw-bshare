@@ -1,5 +1,6 @@
 interface IFolder {
-  path: string;
+  id?: string;
+  path?: string;
   user_id: string;
   card_id?: string;
 }
