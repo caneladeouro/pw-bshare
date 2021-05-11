@@ -43,7 +43,7 @@ services:
       ORM_DATABASE: db_bshare
 
   mysql:
-    image: mysql:8.0.23
+    image: mysql:8.0
     container_name: bshare_database
     profiles: ["dev", "dev-backend", "deploy"]
     ports:
@@ -57,4 +57,4 @@ services:
       MYSQL_DATABASE: db_bshare
 
 volumes:
-  bshare-database:
+  bshare_database:
