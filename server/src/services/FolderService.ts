@@ -27,6 +27,14 @@ class FolderService {
     await this.folderRepository.save(folder);
     return folder;
   }
+
+  async showAllByUser(user_id: string) {
+    const folders = await this.folderRepository.find({
+      user_id,
+    });
+
+    return folders;
+  }
 }
 
 export { FolderService };
