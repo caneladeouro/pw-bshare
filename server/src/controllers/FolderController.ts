@@ -25,6 +25,18 @@ class FolderController {
       return res.status(500);
     }
   }
+
+  async showUserFolderContent(req: Request, res: Response) {
+    try {
+      const { id, user_id } = req.params;
+      const folderService = new FolderService();
+      const folder = await folderService.showUserFolderContent({ id, user_id });
+
+      return res.status(200).json(folder);
+    } catch (err) {
+      return res.status(500);
+    }
+  }
 }
 
 export { FolderController };
