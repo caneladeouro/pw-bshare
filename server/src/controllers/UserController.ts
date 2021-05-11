@@ -13,4 +13,15 @@ export default class UserController {
       return res.status(500);
     }
   }
+
+  async showAll(req: Request, res: Response) {
+    try {
+      const userService = new UserService();
+      const users = await userService.showAll();
+
+      return res.status(200).json(users);
+    } catch (err) {
+      return res.status(500);
+    }
+  }
 }
