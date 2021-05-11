@@ -36,4 +36,12 @@ export default class UserService {
 
     return users;
   }
+
+  async show(id: string) {
+    const user = await this.userRepository.findOne({
+      id,
+    });
+
+    return user;
+  }
 }
