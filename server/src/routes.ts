@@ -14,6 +14,7 @@ router.post("/user/log-in", userController.login);
 router.post("/user", userController.create);
 
 // Folder
+router.get("/folders/:user_id", folderController.showAllByUser);
 router.post("/folder", folderController.create);
 
 export default router;
