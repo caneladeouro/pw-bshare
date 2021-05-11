@@ -44,4 +44,17 @@ export default class UserService {
 
     return user;
   }
+
+  async login(name_our_email: string, password: string) {
+    password = createHash("sha256").update(password).digest("hex");
+
+    const user = await this.userRepository.findOne({
+      where: [
+        { username: name_our_email, password },
+        { email: name_our_email, password },
+      ],
+    });
+
+    return user;
+  }
 }
