@@ -35,6 +35,14 @@ class FolderService {
 
     return folders;
   }
+
+  async showUserFolderContent({ id, user_id }: IFolder) {
+    const folder = await this.folderRepository.findOne({
+      where: { id, user_id },
+    });
+
+    return folder;
+  }
 }
 
 export { FolderService };
