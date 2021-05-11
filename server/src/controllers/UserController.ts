@@ -34,4 +34,14 @@ export default class UserController {
       return res.status(200).json(user);
     } catch (err) {}
   }
+
+  async login(req: Request, res: Response) {
+    try {
+      const { name_our_email, password } = req.body;
+      const userService = new UserService();
+      const user = await userService.login(name_our_email, password);
+
+      return res.status(200).json(user);
+    } catch (err) {}
+  }
 }
