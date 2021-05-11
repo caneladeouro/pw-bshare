@@ -24,4 +24,14 @@ export default class UserController {
       return res.status(500);
     }
   }
+
+  async show(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const userService = new UserService();
+      const user = await userService.show(id);
+
+      return res.status(200).json(user);
+    } catch (err) {}
+  }
 }
