@@ -4,6 +4,8 @@ body {
   width: 100vw;
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
+
+  word-wrap: break-word
 }
 
 .display {
@@ -159,12 +161,13 @@ button:focus {
   outline: none;
 }
 
-.main {
-  margin-top: 115px;
+main {
+  margin-top: 85px;
   width: 100%;
   margin-bottom: 100px;
 }
 
+//Importar arquivos _.scss
 @import "./variables";
 
 @import "./header";
@@ -172,5 +175,8 @@ button:focus {
 @import "./login";
 @import "./layout";
 @import "./cadastra-projeto";
+@import "./projeto";
+@import "./pesquisa";
+@import "./show-user";
 
 @import "./footer";

@@ -191,28 +191,32 @@ HOME | BShare
         <div class="novos">
             <h3>Projetos Novos</h3>
             <div class="row">
-                <!--cada um desses eh o preview de um projeto diferente-->
-                @foreach (array_slice($data, 0, 4) as $project)
-                <div class="col-sm-3">
-                    <a href="#">
-                        <div class="projeto-preview">
-                            <p class="projeto-nome">
-                                {{ $project->title }}
-                            </p>
-                            <a href="">
-                                <p class="projeto-criador">
-                                    Criador do projeto
+
+                <div class="row row-cols-4">
+                    @if($projects != null)
+                    <!--cada um desses eh o preview de um projeto diferente-->
+                    @foreach($projects as $project)
+                    <div class="col">
+                        <a href="#">
+                            <div class="projeto-preview">
+                                <p class="projeto-nome">
+                                    {{ $project->title }}
                                 </p>
-                            </a>
-                            <p class="projeto-tipo">
-                                {{ $project->category }}
-                            </p>
-                        </div>
-                    </a>
+                                <a href="">
+                                    <p class="projeto-criador">
+                                        {{ $project->author->username }}
+                                    </p>
+                                </a>
+                                <p class="projeto-tipo">
+                                    {{ $project->category->category }}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
+                    @endif
                 </div>
-                @endforeach
             </div>
-        </div>
     </main>
 </section>
 

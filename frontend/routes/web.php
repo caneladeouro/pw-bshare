@@ -27,3 +27,8 @@ Route::post('/signUser', [PageController::class, 'storageUser']);
 // Project
 Route::get('/signProject', [PageController::class, 'signProject']);
 Route::post('/signProject', [PageController::class, 'storageProject']);
+Route::get('/projeto', [PageController::class, 'projeto']);
+
+
+// Pesquisa
+Route::get('/pesquisa', [PageController::class, 'pesquisa']);
