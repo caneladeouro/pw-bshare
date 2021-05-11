@@ -33,9 +33,18 @@
     }    
 }
 
-.projetoEditar{
+.projetoPastaEEditar{
     position: absolute;
     right: 15px;
+    float: left;
+
+    .projetoAdicionarAPasta{
+        margin-right: 30px;
+        float: left;
+    }
+    .projetoEditar{
+        float: left;
+    }
 }
 
 .projetoComentarios{

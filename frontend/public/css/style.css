@@ -794,9 +794,19 @@ h3 {
   height: 160px;
 }
 
-.projetoEditar {
+.projetoPastaEEditar {
   position: absolute;
   right: 15px;
+  float: left;
+}
+
+.projetoPastaEEditar .projetoAdicionarAPasta {
+  margin-right: 30px;
+  float: left;
+}
+
+.projetoPastaEEditar .projetoEditar {
+  float: left;
 }
 
 .projetoComentarios {
