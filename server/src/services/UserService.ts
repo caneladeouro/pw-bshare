@@ -3,7 +3,7 @@ import { User } from "../entities/User";
 import { UserRepository } from "../repositorys/UserRepository";
 import { createHash } from "crypto";
 
-export default class UserService {
+class UserService {
   private userRepository: Repository<User>;
 
   constructor() {
@@ -58,3 +58,5 @@ export default class UserService {
     return user;
   }
 }
+
+export { UserService };
