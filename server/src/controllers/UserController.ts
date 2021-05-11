@@ -32,7 +32,9 @@ export default class UserController {
       const user = await userService.show(id);
 
       return res.status(200).json(user);
-    } catch (err) {}
+    } catch (err) {
+      return res.status(500);
+    }
   }
 
   async login(req: Request, res: Response) {
@@ -42,6 +44,8 @@ export default class UserController {
       const user = await userService.login(name_our_email, password);
 
       return res.status(200).json(user);
-    } catch (err) {}
+    } catch (err) {
+      return res.status(500);
+    }
   }
 }
