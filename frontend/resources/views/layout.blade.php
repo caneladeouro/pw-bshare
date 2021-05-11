@@ -136,10 +136,10 @@
             @show
         </header>
     </section>
+
     <main>
         @yield('content')
     </main>
-
 
     <!--Rodapé da página-->
     <section>

@@ -191,10 +191,32 @@ HOME | BShare
         <div class="novos">
             <h3>Projetos Novos</h3>
             <div class="row">
-                <!--cada um desses eh o preview de um projeto diferente-->
- 
+
+                <div class="row row-cols-4">
+                    @if($projects != null)
+                    <!--cada um desses eh o preview de um projeto diferente-->
+                    @foreach($projects as $project)
+                    <div class="col">
+                        <a href="#">
+                            <div class="projeto-preview">
+                                <p class="projeto-nome">
+                                    {{ $project->title }}
+                                </p>
+                                <a href="">
+                                    <p class="projeto-criador">
+                                        {{ $project->author->username }}
+                                    </p>
+                                </a>
+                                <p class="projeto-tipo">
+                                    {{ $project->category->category }}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
+                    @endif
+                </div>
             </div>
-        </div>
     </main>
 </section>
 
