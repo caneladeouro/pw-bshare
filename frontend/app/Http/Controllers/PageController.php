@@ -15,6 +15,97 @@ class PageController extends Controller
 
     public function home()
     {
+        return view('home', ["projects" => [
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+        ]]);
+
         $ch = curl_init("http://$this->backend/projects");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -26,7 +117,7 @@ class PageController extends Controller
 
             // If not exist from server display the projects
             if ($info['http_code'] == 200) {
-                return view('home', ["data" => [$result]]);
+                // return view('home', ["data" => [$result]]);
             } else {
                 abort(500);
             }
@@ -37,6 +128,8 @@ class PageController extends Controller
 
     public function signProject()
     {
+        return view('cadastra-projeto');
+
         if (session()->exists('user')) {
             return view('cadastra-projeto');
         } else {
@@ -51,7 +144,96 @@ class PageController extends Controller
 
     public function pesquisa()
     {
-        return view('pesquisa');
+        return view('pesquisa', ["projects" => [
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+            (object) [
+                "title" => "first-project",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "contruction"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Matheus Farbiano"
+                ]
+            ],
+        ]]);
     }
 
     public function login()

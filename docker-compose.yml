@@ -24,21 +24,23 @@ services:
     build:
       dockerfile: Dockerfile.backend
       context: ./server/
-    container_name: bshare_webservice
+    container_name: bshare_backend
+    ports:
+      - 3100:3100
+      - 9229:9229
+    volumes:
+      - ./server/:/app
     profiles: ["dev", "dev-backend"]
+    working_dir: /app
     depends_on:
       - mysql
-    ports:
-      - 3200:80
-    volumes:
-      - ./server/:/var/www/html/
-      - ./server/config/000-default.conf:/etc/apache2/sites-available/000-default.conf
-      - ./server/config/start-apache:/usr/local/bin/start-apache
+    command: yarn dev
     environment:
-      MYSQL_HOST: bshare_database
-      MYSQL_USER: root
-      MYSQL_PASSWORD: bshare
-      MYSQL_DB: db_bshare
+      ORM_CONNECTION: mysql
+      ORM_HOST: bshare_database
+      ORM_USERNAME: root
+      ORM_PASSWORD: bshare
+      ORM_DATABASE: db_bshare
 
   mysql:
     image: mysql:8.0.23
