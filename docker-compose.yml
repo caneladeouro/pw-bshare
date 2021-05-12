@@ -14,7 +14,7 @@ services:
       - ./frontend/config/000-default.conf:/etc/apache2/sites-available/000-default.conf
       - ./frontend/config/start-apache:/usr/local/bin/start-apache
     environment:
-      Webservice_HOST: bshare_webservice
+      Webservice_HOST: bshare_backend
       APP_ENV: development
       APACHE_RUN_USER: apache-www-volume
       APACHE_RUN_GROUP: apache-www-volume
@@ -49,7 +49,7 @@ services:
     ports:
       - 3309:3306
     volumes:
-      - bshare-database:/var/lib/mysql
+      - bshare_database:/var/lib/mysql
     environment:
       MYSQL_USER: CANELA
       MYSQL_PASSWORD: canela
