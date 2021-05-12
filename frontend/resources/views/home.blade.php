@@ -32,152 +32,54 @@ HOME | BShare
                 <div class="carousel-inner">
 
                     <div class="carousel-item active">
-                        <div class="row">
+                        <div class="row row-cols-4">
                             <!--cada um desses eh o preview de um projeto diferente-->
-                            <div class="col-sm-3">
+                            @foreach(array_slice($main_projects, 0, 4) as $main_project)
+                            <div class="col">
                                 <a href="">
                                     <div class="projeto-preview">
                                         <p class="projeto-nome">
-                                            Nome do Projeto
+                                            {{ $main_project->title }}
                                         </p>
                                         <a href="">
                                             <p class="projeto-criador">
-                                                Criador do projeto
+                                                {{ $main_project->author->username }}
                                             </p>
                                         </a>
                                         <p class="projeto-tipo">
-                                            Tipo do Projeto
+                                            {{ $main_project->category->category }}
                                         </p>
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-sm-3">
-                                <a href="">
-                                    <div class="projeto-preview">
-                                        <p class="projeto-nome">
-                                            Nome do Projeto
-                                        </p>
-                                        <a href="">
-                                            <p class="projeto-criador">
-                                                Criador do projeto
-                                            </p>
-                                        </a>
-                                        <p class="projeto-tipo">
-                                            Tipo do Projeto
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="">
-                                    <div class="projeto-preview">
-                                        <p class="projeto-nome">
-                                            Nome do Projeto
-                                        </p>
-                                        <a href="">
-                                            <p class="projeto-criador">
-                                                Criador do projeto
-                                            </p>
-                                        </a>
-                                        <p class="projeto-tipo">
-                                            Tipo do Projeto
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="">
-                                    <div class="projeto-preview">
-                                        <p class="projeto-nome">
-                                            Nome do Projeto
-                                        </p>
-                                        <a href="">
-                                            <p class="projeto-criador">
-                                                Criador do projeto
-                                            </p>
-                                        </a>
-                                        <p class="projeto-tipo">
-                                            Tipo do Projeto
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
+                            @endforeach
                         </div>
                         <!--.row-->
                     </div>
                     <!--.item-->
 
                     <div class="carousel-item">
-                        <div class="row">
+                        <div class="row row-cols-4">
                             <!--cada um desses eh o preview de um projeto diferente-->
-                            <div class="col-sm-3">
+                            @foreach(array_slice($main_projects, 4, 8) as $main_project)
+                            <div class="col">
                                 <a href="">
                                     <div class="projeto-preview">
                                         <p class="projeto-nome">
-                                            Nome do Projeto
+                                            {{ $main_project->title }}
                                         </p>
                                         <a href="">
                                             <p class="projeto-criador">
-                                                Criador do projeto
+                                                {{ $main_project->author->username }}
                                             </p>
                                         </a>
                                         <p class="projeto-tipo">
-                                            Tipo do Projeto
+                                            {{ $main_project->category->category }}
                                         </p>
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-sm-3">
-                                <a href="">
-                                    <div class="projeto-preview">
-                                        <p class="projeto-nome">
-                                            Nome do Projeto
-                                        </p>
-                                        <a href="">
-                                            <p class="projeto-criador">
-                                                Criador do projeto
-                                            </p>
-                                        </a>
-                                        <p class="projeto-tipo">
-                                            Tipo do Projeto
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="">
-                                    <div class="projeto-preview">
-                                        <p class="projeto-nome">
-                                            Nome do Projeto
-                                        </p>
-                                        <a href="">
-                                            <p class="projeto-criador">
-                                                Criador do projeto
-                                            </p>
-                                        </a>
-                                        <p class="projeto-tipo">
-                                            Tipo do Projeto
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="">
-                                    <div class="projeto-preview">
-                                        <p class="projeto-nome">
-                                            Nome do Projeto
-                                        </p>
-                                        <a href="">
-                                            <p class="projeto-criador">
-                                                Criador do projeto
-                                            </p>
-                                        </a>
-                                        <p class="projeto-tipo">
-                                            Tipo do Projeto
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
+                            @endforeach
                         </div>
                         <!--.row-->
                     </div>
@@ -197,7 +99,7 @@ HOME | BShare
                     <!--cada um desses eh o preview de um projeto diferente-->
                     @foreach($projects as $project)
                     <div class="col">
-                        <a href="#">
+                        <a href="/projeto">
                             <div class="projeto-preview">
                                 <p class="projeto-nome">
                                     {{ $project->title }}
