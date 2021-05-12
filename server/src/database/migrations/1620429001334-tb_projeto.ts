@@ -33,7 +33,7 @@ export class tbProjeto1620429001334 implements MigrationInterface {
             type: "double",
           },
           {
-            name: "im_prjeto",
+            name: "im_projeto",
             type: "varchar",
             length: "60",
           },
