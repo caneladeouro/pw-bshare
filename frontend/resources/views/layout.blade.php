@@ -50,7 +50,9 @@
             <!--Cabeçalho da página-->
             <!--Logo-->
             <div class="header-container logo-container">
-                <img src="img/logo-white-full.png" class="logo">
+                <a href="/">
+                    <img src="img/logo-white-full.png" class="logo">
+                </a>
             </div>
             @show
 
@@ -64,9 +66,9 @@
                 </svg>
 
                 <div class="dropdown-content pesquisar">
-                    <form action="">
+                    <form action="/pesquisar">
                         <input type="text" placeholder="Pesquisar">
-                        <input type="submit" value=">" class="submit pesquisar-submit">
+                        <a href="/pesquisa" class="submit pesquisar-submit">></a>
                     </form>
                 </div>
             </div>
@@ -84,7 +86,7 @@
                         @else
                         <a href="/logoff">Logoff</a> <br>
                         <a href="/signProject">+Postar Projeto</a><br>
-                        <a href="">Configurações</a><br>
+                        <a href="/myself">Perfil</a><br>
                         @endif
                     </div>
                     Tema
@@ -137,7 +139,7 @@
         </header>
     </section>
 
-    <main>
+    <main class="main">
         @yield('content')
     </main>
 

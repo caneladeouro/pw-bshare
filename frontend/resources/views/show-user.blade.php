@@ -45,7 +45,9 @@ MYSELF | BShare
                         </div>
 
                         <div class="">
+                            @isset($data->biografy)
                             {{ $data->biografy }}
+                            @endisset
                         </div>
                     </div>
                 </div>
@@ -95,6 +97,7 @@ MYSELF | BShare
                 <a href="#" class="m-3">see more</a>
             </div>
 
+            @isset($data->folders)
             @foreach($data->folders as $folder)
             <div class="col-sm-3">
                 <a href="#">
@@ -106,6 +109,7 @@ MYSELF | BShare
                 </a>
             </div>
             @endforeach
+            @endisset
         </div>
     </div>
 </section>

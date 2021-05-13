@@ -29,15 +29,11 @@ export class tbProjeto1620429001334 implements MigrationInterface {
             length: "60",
           },
           {
-            name: "qt_classificacao_idade",
-            type: "int",
-          },
-          {
             name: "vl_preco_projeto",
             type: "double",
           },
           {
-            name: "im_prjeto",
+            name: "im_projeto",
             type: "varchar",
             length: "60",
           },

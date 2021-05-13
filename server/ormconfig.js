@@ -1,5 +1,4 @@
 module.exports = {
-  name: "default",
   type: process.env.ORM_CONNECTION,
   host: process.env.ORM_HOST,
   port: 3306,

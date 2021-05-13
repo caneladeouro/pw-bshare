@@ -20,7 +20,18 @@ class PageController extends Controller
                 "title" => "first-project",
                 "category" => (object) [
                     "id" => "test",
-                    "category" => "contruction"
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Paulo Santos"
+                ]
+            ],
+            (object) [
+                "title" => "caneca",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
                 ],
                 "author" => (object) [
                     "id" => "test",
@@ -28,10 +39,43 @@ class PageController extends Controller
                 ]
             ],
             (object) [
+                "title" => "carro",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Catarina Dimanhares"
+                ]
+            ],
+            (object) [
+                "title" => "parede",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Catarina Dimanhares"
+                ]
+            ],
+            (object) [
+                "title" => "aviao",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Catarina Dimanhares"
+                ]
+            ],
+            (object) [
                 "title" => "first-project",
                 "category" => (object) [
                     "id" => "test",
-                    "category" => "contruction"
+                    "category" => "Modelo 3D"
                 ],
                 "author" => (object) [
                     "id" => "test",
@@ -39,10 +83,10 @@ class PageController extends Controller
                 ]
             ],
             (object) [
-                "title" => "first-project",
+                "title" => "meteoro",
                 "category" => (object) [
                     "id" => "test",
-                    "category" => "contruction"
+                    "category" => "Modelo 3D"
                 ],
                 "author" => (object) [
                     "id" => "test",
@@ -50,10 +94,33 @@ class PageController extends Controller
                 ]
             ],
             (object) [
+                "title" => "colher",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Tiago Renantes"
+                ]
+            ],
+        ], "main_projects" => [
+            (object) [
                 "title" => "first-project",
                 "category" => (object) [
                     "id" => "test",
-                    "category" => "contruction"
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Paulo Santos"
+                ]
+            ],
+            (object) [
+                "title" => "caneca",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
                 ],
                 "author" => (object) [
                     "id" => "test",
@@ -61,10 +128,43 @@ class PageController extends Controller
                 ]
             ],
             (object) [
+                "title" => "carro",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Catarina Dimanhares"
+                ]
+            ],
+            (object) [
+                "title" => "parede",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Catarina Dimanhares"
+                ]
+            ],
+            (object) [
+                "title" => "aviao",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Catarina Dimanhares"
+                ]
+            ],
+            (object) [
                 "title" => "first-project",
                 "category" => (object) [
                     "id" => "test",
-                    "category" => "contruction"
+                    "category" => "Modelo 3D"
                 ],
                 "author" => (object) [
                     "id" => "test",
@@ -72,10 +172,10 @@ class PageController extends Controller
                 ]
             ],
             (object) [
-                "title" => "first-project",
+                "title" => "meteoro",
                 "category" => (object) [
                     "id" => "test",
-                    "category" => "contruction"
+                    "category" => "Modelo 3D"
                 ],
                 "author" => (object) [
                     "id" => "test",
@@ -83,25 +183,14 @@ class PageController extends Controller
                 ]
             ],
             (object) [
-                "title" => "first-project",
+                "title" => "colher",
                 "category" => (object) [
                     "id" => "test",
-                    "category" => "contruction"
+                    "category" => "Modelo 3D"
                 ],
                 "author" => (object) [
                     "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "first-project",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "contruction"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
+                    "username" => "Tiago Renantes"
                 ]
             ],
         ]]);
@@ -117,7 +206,7 @@ class PageController extends Controller
 
             // If not exist from server display the projects
             if ($info['http_code'] == 200) {
-                // return view('home', ["data" => [$result]]);
+                return view('home', ["data" => [$result]]);
             } else {
                 abort(500);
             }
@@ -128,8 +217,6 @@ class PageController extends Controller
 
     public function signProject()
     {
-        return view('cadastra-projeto');
-
         if (session()->exists('user')) {
             return view('cadastra-projeto');
         } else {
@@ -139,7 +226,20 @@ class PageController extends Controller
 
     public function projeto()
     {
-        return view('projeto');
+        return view('projeto', ["project" => 
+                (object) [
+                    "title" => "first-project",
+                    "category" => (object) [
+                        "id" => "test",
+                        "category" => "contruction"
+                    ],
+                    "author" => (object) [
+                        "id" => "test",
+                        "username" => "Paulo Santos"
+                    ]
+                ]
+            ],
+        );
     }
 
     public function pesquisa()
@@ -149,7 +249,18 @@ class PageController extends Controller
                 "title" => "first-project",
                 "category" => (object) [
                     "id" => "test",
-                    "category" => "contruction"
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Paulo Santos"
+                ]
+            ],
+            (object) [
+                "title" => "caneca",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
                 ],
                 "author" => (object) [
                     "id" => "test",
@@ -157,10 +268,43 @@ class PageController extends Controller
                 ]
             ],
             (object) [
+                "title" => "carro",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Catarina Dimanhares"
+                ]
+            ],
+            (object) [
+                "title" => "parede",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Catarina Dimanhares"
+                ]
+            ],
+            (object) [
+                "title" => "aviao",
+                "category" => (object) [
+                    "id" => "test",
+                    "category" => "Modelo 3D"
+                ],
+                "author" => (object) [
+                    "id" => "test",
+                    "username" => "Catarina Dimanhares"
+                ]
+            ],
+            (object) [
                 "title" => "first-project",
                 "category" => (object) [
                     "id" => "test",
-                    "category" => "contruction"
+                    "category" => "Modelo 3D"
                 ],
                 "author" => (object) [
                     "id" => "test",
@@ -168,10 +312,10 @@ class PageController extends Controller
                 ]
             ],
             (object) [
-                "title" => "first-project",
+                "title" => "meteoro",
                 "category" => (object) [
                     "id" => "test",
-                    "category" => "contruction"
+                    "category" => "Modelo 3D"
                 ],
                 "author" => (object) [
                     "id" => "test",
@@ -179,58 +323,14 @@ class PageController extends Controller
                 ]
             ],
             (object) [
-                "title" => "first-project",
+                "title" => "colher",
                 "category" => (object) [
                     "id" => "test",
-                    "category" => "contruction"
+                    "category" => "Modelo 3D"
                 ],
                 "author" => (object) [
                     "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "first-project",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "contruction"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "first-project",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "contruction"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "first-project",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "contruction"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "first-project",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "contruction"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
+                    "username" => "Tiago Renantes"
                 ]
             ],
         ]]);
@@ -258,17 +358,18 @@ class PageController extends Controller
     public function verifyUser(Request $req)
     {
         $data = [
-            "nameOurEmail" => $req->nameOurEmail,
+            "name_our_email" => $req->nameOurEmail,
             "password" => $req->password
         ];
         $headers = ["Content-type:application/json"];
 
-        $ch = curl_init("http://$this->backend/user/logIn");
+        $ch = curl_init("http://$this->backend/user/log_in");
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        $result = curl_exec($ch);
+        curl_setopt($ch, CURLOPT_PORT, 3100);
+        $result = json_decode(curl_exec($ch));
 
         if (!curl_errno($ch)) {
             $info = curl_getinfo($ch);
@@ -302,6 +403,7 @@ class PageController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_PORT, 3100);
 
         $result = curl_exec($ch);
 
@@ -325,6 +427,8 @@ class PageController extends Controller
 
     public function storageProject(Request $req)
     {
+        return redirect('/');
+
         $headers = ["Content-type:multipart/form-data"];
 
         $data = [
@@ -375,30 +479,30 @@ class PageController extends Controller
 
     public function showUser()
     {
-        // return view('show-user', ["data" => session()->get('user')]);
-        return view('show-user', ["data" => (object) [
-            "username" => "Matheus Farbiano",
-            "email" => "matheus.test01@gmail.com",
-            "biografy" => "Clita ut aliquyam est labore justo eirmod accusam no sea sanctus, lorem magna et vero justo sit stet diam amet, gubergren consetetur diam sanctus stet consetetur, dolor consetetur dolor amet justo, no sed magna vero diam est consetetur rebum tempor, amet vero voluptua lorem sadipscing ut, lorem eirmod et eos.",
-            "created_projects" => [
-                (object) [
-                    "title" => "first-project",
-                    "category" => (object) [
-                        "id" => "test",
-                        "category" => "contruction"
-                    ],
-                    "author" => (object) [
-                        "id" => "test",
-                        "username" => "Matheus Farbiano"
-                    ]
-                ]
-            ],
-            "folders" => [
-                (object) [
-                    "id" => "test",
-                    "path" => "first-projects"
-                ]
-            ]
-        ]]);
+        return view('show-user', ["data" => session()->get('user')]);
+        // return view('show-user', ["data" => (object) [
+        //     "username" => "Matheus Farbiano",
+        //     "email" => "matheus.test01@gmail.com",
+        //     "biografy" => "Clita ut aliquyam est labore justo eirmod accusam no sea sanctus, lorem magna et vero justo sit stet diam amet, gubergren consetetur diam sanctus stet consetetur, dolor consetetur dolor amet justo, no sed magna vero diam est consetetur rebum tempor, amet vero voluptua lorem sadipscing ut, lorem eirmod et eos.",
+        //     "created_projects" => [
+        //         (object) [
+        //             "title" => "first-project",
+        //             "category" => (object) [
+        //                 "id" => "test",
+        //                 "category" => "contruction"
+        //             ],
+        //             "author" => (object) [
+        //                 "id" => "test",
+        //                 "username" => "Matheus Farbiano"
+        //             ]
+        //         ]
+        //     ],
+        //     "folders" => [
+        //         (object) [
+        //             "id" => "test",
+        //             "path" => "first-projects"
+        //         ]
+        //     ]
+        // ]]);
     }
 }
