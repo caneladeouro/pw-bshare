@@ -32,3 +32,6 @@ Route::get('/projeto', [PageController::class, 'projeto']);
 
 // Pesquisa
 Route::get('/pesquisa', [PageController::class, 'pesquisa']);
+
+// Pasta
+Route::get('/pasta', [PageController::class, 'pasta']);

@@ -492,11 +492,10 @@ header {
 }
 
 /*LAYOUT----------------------------------------------------------------------------------------------------------------*/
-h3 {
-  margin-left: 25px;
-  margin-bottom: 20px;
-}
-
+/*h3{
+    margin-left: 25px;
+    margin-bottom: 20px;
+}*/
 .favoritos {
   width: 98vw;
   margin-bottom: 90px;
@@ -803,10 +802,12 @@ h3 {
 .projetoPastaEEditar .projetoAdicionarAPasta {
   margin-right: 30px;
   float: left;
+  color: var(--primary);
 }
 
 .projetoPastaEEditar .projetoEditar {
   float: left;
+  color: var(--primary);
 }
 
 .projetoComentarios {
@@ -904,6 +905,15 @@ h3 {
 
 .showUserConteudo {
   padding: 20px;
+}
+
+/*PASTA----------------------------------------------------------------------------------------------------------------*/
+.pastaInfo {
+  margin-left: 20px;
+}
+
+.pastaInfo .pastaEditar {
+  color: var(--primary);
 }
 
 /*FOOTER------------------------------------------------------*/

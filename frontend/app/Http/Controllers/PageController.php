@@ -141,6 +141,11 @@ class PageController extends Controller
     {
         return view('projeto');
     }
+    
+    public function pasta()
+    {
+        return view('pasta');
+    }
 
     public function pesquisa()
     {
