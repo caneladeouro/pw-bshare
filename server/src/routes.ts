@@ -28,7 +28,11 @@ router.post("/folder", folderController.create);
 router.get("/projects", projectController.showAll);
 router.post(
   "/project",
-  upload.fields([{ name: "project" }]),
+  upload.fields([
+    { name: "project", maxCount: 1 },
+    { name: "main_image", maxCount: 1 },
+    { name: "images", maxCount: 3 },
+  ]),
   projectController.create
 );
 
