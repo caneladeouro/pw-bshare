@@ -3,17 +3,15 @@ import { User } from "../entities/User";
 import { UserRepository } from "../repositorys/UserRepository";
 import { createHash } from "crypto";
 
-export default class UserService {
-  // private userRepository: Repository<User>;
+class UserService {
+  private userRepository: Repository<User>;
 
-  // constructor() {
-  //   this.userRepository =
-  // }
+  constructor() {
+    this.userRepository = getCustomRepository(UserRepository);
+  }
 
   async create({ username, email, password }: IUser) {
-    const userRepository = getCustomRepository(UserRepository);
-
-    const userAlreadyExist = await userRepository.findOne({
+    const userAlreadyExist = await this.userRepository.findOne({
       where: [{ username }, { email }],
     });
 
@@ -23,13 +21,42 @@ export default class UserService {
 
     password = createHash("sha256").update(password).digest("hex");
 
-    const user = userRepository.create({
+    const user = this.userRepository.create({
       username,
       email,
       password,
     });
 
-    await userRepository.save(user);
+    await this.userRepository.save(user);
+    return user;
+  }
+
+  async showAll() {
+    const users = await this.userRepository.find();
+
+    return users;
+  }
+
+  async show(id: string) {
+    const user = await this.userRepository.findOne({
+      id,
+    });
+
+    return user;
+  }
+
+  async login(name_our_email: string, password: string) {
+    password = createHash("sha256").update(password).digest("hex");
+
+    const user = await this.userRepository.findOne({
+      where: [
+        { username: name_our_email, password },
+        { email: name_our_email, password },
+      ],
+    });
+
     return user;
   }
 }
+
+export { UserService };

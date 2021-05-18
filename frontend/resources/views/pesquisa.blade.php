@@ -78,7 +78,7 @@ Pesquisa | BShare
         <!--cada um desses eh o preview de um projeto diferente-->
         @foreach($projects as $project)
         <div class="col">
-            <a href="#">
+            <a href="/projeto">
                 <div class="projeto-preview">
                     <p class="projeto-nome">
                         {{ $project->title }}
