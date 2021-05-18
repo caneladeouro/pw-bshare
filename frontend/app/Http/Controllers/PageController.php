@@ -241,6 +241,11 @@ class PageController extends Controller
             ],
         );
     }
+    
+    public function pasta()
+    {
+        return view('pasta');
+    }
 
     public function pesquisa()
     {
