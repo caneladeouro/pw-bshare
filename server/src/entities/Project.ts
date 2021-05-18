@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Image } from "./Image";
 
 @Entity("tb_projeto")
 class Project {
@@ -26,6 +27,12 @@ class Project {
 
   @Column({ name: "cd_categoria" })
   category: string;
+
+  @JoinColumn({ name: "cd_projeto" })
+  @OneToMany(() => Image, (image) => image.project, {
+    cascade: ["insert", "update"],
+  })
+  images: Image[];
 
   constructor() {
     if (!this.id) {
