@@ -4,8 +4,8 @@ interface IProject {
   description: string;
   price: string;
   author: string;
-  comment?: string;
-  // images: string[];
+  category: string;
+  images: { image: string }[];
   main_image: string;
-  created_at: string;
+  project: string;
 }
