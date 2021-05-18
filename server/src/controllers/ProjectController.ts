@@ -3,10 +3,19 @@ import { ProjectService } from "../services/ProjectService";
 
 class ProjectController {
   async create(req: Request, res: Response) {
-    const main_image_test = req.file as Express.Multer.File;
-    const image = main_image_test.filename;
+    const projectService = new ProjectService();
+    const requestFiles = req.files as Express.Multer.File[];
+    const images = requestFiles["images"].map((image: Express.Multer.File) => {
+      return { image: image.filename };
+    });
+    const project = await projectService.create({
+      ...req.body,
+      images,
+      project: requestFiles["project"][0].filename,
+      main_image: requestFiles["main_image"][0].filename,
+    });
 
-    return res.status(201).json(req.body);
+    return res.status(201).json(project);
   }
 
   async showAll(req: Request, res: Response) {
