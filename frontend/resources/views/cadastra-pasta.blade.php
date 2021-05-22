@@ -20,7 +20,20 @@ Criar pasta | BShare
 @section('content')
 
 <section>
-    <div class="criarPastaContainer">
+    <div class="cadastraPastaContainer">
+        <form action="" method="post">
+            <div class="row">
+                Nome: <input type="text" name="pastaNome" id="pastaNome">
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                Descrição: <textarea name="pastaDescricao" id="pastaDescricao" cols="30" rows="3" style="margin-left: 10px;"></textarea>
+            </div>
+        </form>
+        <button class="fechar-popup" onclick="popupClose()">
+            X
+        </button>
+    </div>
+    <div class="cadastraPastaBG">
         
     </div>
 </section>
