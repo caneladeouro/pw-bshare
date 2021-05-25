@@ -20,7 +20,7 @@ HOME | BShare
     <!-- O código resposável pelo main está no -->
     <main class="main">
         <div class="favoritos">
-            <h3>Favoritos da Comunidade</h3>
+            <h3 style="margin-left:20px;">Favoritos da Comunidade</h3>
             <div id="blogCarousel" class="carousel slide" data-ride="carousel">
 
                 <ol class="carousel-indicators">
@@ -91,7 +91,7 @@ HOME | BShare
         </div>
         <!--FAVORITOS-->
         <div class="novos">
-            <h3>Projetos Novos</h3>
+            <h3 style="margin-left:20px;">Projetos Novos</h3>
             <div class="row">
 
                 <div class="row row-cols-4">
