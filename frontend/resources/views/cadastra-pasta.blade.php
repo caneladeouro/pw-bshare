@@ -30,8 +30,9 @@ Criar pasta | BShare
             </div>
             <input type="submit" value="Criar">
         </form>
-        <button class="fechar-popup" onclick="popupClose()">
+        <button class="fechar-popup">
             X
+            <!--Ao usuário clicar no X, cadastra-pasta.blade.php deve fechar-->
         </button>
     </div>
     <div class="fundo-popup display">

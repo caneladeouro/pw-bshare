@@ -25,14 +25,6 @@ function popupClose() {
         $(".fundo-popup").removeClass("display");
         $(".fundo-popup").addClass("hide");
     }
-    if ($(".cadastraPastaContainer").hasClass("display")) {
-
-        $(".cadastraPastaContainer").removeClass("display");
-        $(".cadastraPastaContainer").addClass("hide");
-
-        $(".fundo-popup").removeClass("display");
-        $(".fundo-popup").addClass("hide");
-    }
 }
 
 function chooseVideo() {
