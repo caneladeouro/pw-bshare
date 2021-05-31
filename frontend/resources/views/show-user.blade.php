@@ -94,7 +94,7 @@ MYSELF | BShare
                 <h3 class="m-3">
                     Folders
                 </h3>
-                <a href="#" class="m-3">see more</a>
+                <a href="/pasta" class="m-3">see more</a>
             </div>
 
             @isset($data->folders)
