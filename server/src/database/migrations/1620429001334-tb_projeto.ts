@@ -46,6 +46,11 @@ export class tbProjeto1620429001334 implements MigrationInterface {
             type: "char",
             length: "36",
           },
+          {
+            name: "cd_usuario",
+            type: "char",
+            length: "36",
+          },
         ],
         foreignKeys: [
           {
@@ -53,6 +58,13 @@ export class tbProjeto1620429001334 implements MigrationInterface {
             columnNames: ["cd_categoria"],
             referencedTableName: "tb_categoria",
             referencedColumnNames: ["cd_categoria"],
+            onUpdate: "CASCADE",
+          },
+          {
+            name: "fk_tb_usuario_tb_projeto",
+            columnNames: ["cd_usuario"],
+            referencedTableName: "tb_usuario",
+            referencedColumnNames: ["cd_usuario"],
             onUpdate: "CASCADE",
           },
         ],
