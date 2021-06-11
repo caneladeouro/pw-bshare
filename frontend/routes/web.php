@@ -35,3 +35,4 @@ Route::get('/pesquisa', [PageController::class, 'pesquisa']);
 
 // Pasta
 Route::get('/pasta', [PageController::class, 'pasta']);
+Route::get('/signPasta', [PageController::class, 'signPasta']);
