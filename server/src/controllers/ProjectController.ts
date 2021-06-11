@@ -26,6 +26,14 @@ class ProjectController {
 
     return res.status(200).json(projects);
   }
+
+  async showById(req: Request, res: Response) {
+    const { id } = req.params;
+    const projectService = new ProjectService();
+    const project = await projectService.showById(id);
+
+    return res.status(200).json(project);
+  }
 }
 
 export { ProjectController };
