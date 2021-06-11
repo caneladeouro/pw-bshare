@@ -5,9 +5,11 @@ class ProjectController {
   async create(req: Request, res: Response) {
     const projectService = new ProjectService();
     const requestFiles = req.files as Express.Multer.File[];
-    const images = requestFiles["images"].map((image: Express.Multer.File) => {
-      return { image: image.filename };
-    });
+    const images = requestFiles["images[]"].map(
+      (image: Express.Multer.File) => {
+        return { image: image.filename };
+      }
+    );
     const project = await projectService.create({
       ...req.body,
       images,
