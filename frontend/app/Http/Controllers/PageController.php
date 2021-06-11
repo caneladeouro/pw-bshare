@@ -368,7 +368,7 @@ class PageController extends Controller
         ];
         $headers = ["Content-type:application/json"];
 
-        $ch = curl_init("http://$this->backend/user/log_in");
+        $ch = curl_init("http://$this->backend/users/log_in");
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
