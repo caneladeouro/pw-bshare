@@ -35,5 +35,6 @@ router.post(
   ]),
   projectController.create
 );
+router.get("/projects/:id", projectController.showById);
 
 export default router;
