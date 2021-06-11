@@ -224,6 +224,11 @@ class PageController extends Controller
         }
     }
 
+    public function signPasta()
+    {
+        return view('cadastra-pasta');
+    }
+
     public function projeto()
     {
         return view('projeto', ["project" => 
