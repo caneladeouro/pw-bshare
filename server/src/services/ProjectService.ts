@@ -5,6 +5,7 @@ import projectView from "../views/ProjectView";
 
 class ProjectService {
   private projectRepository: Repository<Project>;
+  private relations = ["images", "category", "author"];
 
   constructor() {
     this.projectRepository = getCustomRepository(ProjectRepository);
@@ -37,7 +38,7 @@ class ProjectService {
 
   async showAll() {
     const projects = await this.projectRepository.find({
-      relations: ["images", "category", "author"],
+      relations: this.relations,
     });
 
     return projectView.renderMany(projects);
@@ -46,7 +47,7 @@ class ProjectService {
   async showById(id: string) {
     const project = await this.projectRepository.findOne({
       where: { id },
-      relations: ["images", "category", "author"],
+      relations: this.relations,
     });
 
     return projectView.render(project);
@@ -55,7 +56,7 @@ class ProjectService {
   async showByUser(author_id: string) {
     const projects = await this.projectRepository.find({
       where: { author_id },
-      relations: ["images", "category", "author"],
+      relations: this.relations,
     });
 
     return projectView.renderMany(projects);
