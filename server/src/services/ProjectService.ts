@@ -51,6 +51,15 @@ class ProjectService {
 
     return projectView.render(project);
   }
+
+  async showByUser(author_id: string) {
+    const projects = await this.projectRepository.find({
+      where: { author_id },
+      relations: ["images", "category", "author"],
+    });
+
+    return projectView.renderMany(projects);
+  }
 }
 
 export { ProjectService };
