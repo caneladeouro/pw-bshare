@@ -34,6 +34,14 @@ class ProjectController {
 
     return res.status(200).json(project);
   }
+
+  async showByUser(req: Request, res: Response) {
+    const { author_id } = req.params;
+    const projectService = new ProjectService();
+    const projects = await projectService.showByUser(author_id);
+
+    return res.status(200).json(projects);
+  }
 }
 
 export { ProjectController };
