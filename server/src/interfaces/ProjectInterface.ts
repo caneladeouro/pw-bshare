@@ -4,7 +4,8 @@ interface IProject {
   description: string;
   price: string;
   author: string;
-  category: string;
+  category_id: string;
+  author_id: string;
   images: { image: string }[];
   main_image: string;
   project: string;
