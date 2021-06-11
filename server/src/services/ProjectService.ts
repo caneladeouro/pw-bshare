@@ -1,6 +1,7 @@
 import { getCustomRepository, Repository } from "typeorm";
 import { Project } from "../entities/Project";
 import { ProjectRepository } from "../repositorys/ProjectRepository";
+import projectView from "../views/ProjectView";
 
 class ProjectService {
   private projectRepository: Repository<Project>;
@@ -22,9 +23,10 @@ class ProjectService {
       title: data.title,
       description: data.description,
       main_image: data.main_image,
-      category: data.category,
+      category_id: data.category_id,
       price: data.price,
       project: data.project,
+      author_id: data.author_id,
       images: data.images,
       active: true,
     });
@@ -35,20 +37,10 @@ class ProjectService {
 
   async showAll() {
     const projects = await this.projectRepository.find({
-      relations: ["images"],
+      relations: ["images", "category", "author"],
     });
 
-    return projects.map((project) => {
-      return {
-        ...project,
-        images: project.images.map((image) => {
-          return {
-            ...image,
-            image: `http://127.0.0.1:3100/uploads/${image.image}`,
-          };
-        }),
-      };
-    });
+    return projectView.renderMany(projects);
   }
 }
 
