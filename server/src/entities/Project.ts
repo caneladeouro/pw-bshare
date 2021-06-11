@@ -1,6 +1,18 @@
-import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Category } from "./Category";
+import { Folder } from "./Folder";
 import { Image } from "./Image";
+import { User } from "./User";
 
 @Entity("tb_projeto")
 class Project {
@@ -26,7 +38,25 @@ class Project {
   active: boolean;
 
   @Column({ name: "cd_categoria" })
-  category: string;
+  category_id: string;
+
+  @Column({ name: "cd_usuario" })
+  author_id: string;
+
+  @JoinColumn({ name: "cd_usuario" })
+  @ManyToOne(() => User)
+  author: User;
+
+  // @ManyToMany(() => Folder)
+  // @JoinTable({
+  //   name: "tb_pasta_projeto",
+  //   joinColumn: { name: "cd_projeto", referencedColumnName: "id" },
+  // })
+  // folders: Folder[];
+
+  @JoinColumn({ name: "cd_categoria" })
+  @ManyToOne(() => Category)
+  category: Category;
 
   @JoinColumn({ name: "cd_projeto" })
   @OneToMany(() => Image, (image) => image.project, {
