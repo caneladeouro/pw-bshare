@@ -42,6 +42,15 @@ class ProjectService {
 
     return projectView.renderMany(projects);
   }
+
+  async showById(id: string) {
+    const project = await this.projectRepository.findOne({
+      where: { id },
+      relations: ["images", "category", "author"],
+    });
+
+    return projectView.render(project);
+  }
 }
 
 export { ProjectService };
