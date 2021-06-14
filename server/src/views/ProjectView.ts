@@ -15,7 +15,7 @@ export default {
       category: project.category,
       images: imageView.renderMany(project.images),
       author: userView.render(project.author),
-      // folders: project.folders,
+      folders: project.folders,
     };
   },
 
