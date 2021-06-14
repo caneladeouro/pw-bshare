@@ -47,12 +47,13 @@ class Project {
   @ManyToOne(() => User)
   author: User;
 
-  // @ManyToMany(() => Folder)
-  // @JoinTable({
-  //   name: "tb_pasta_projeto",
-  //   joinColumn: { name: "cd_projeto", referencedColumnName: "id" },
-  // })
-  // folders: Folder[];
+  @ManyToMany(() => Folder)
+  @JoinTable({
+    name: "tb_pasta_projeto",
+    joinColumn: { name: "cd_projeto", referencedColumnName: "id" },
+    inverseJoinColumn: { name: "cd_pasta", referencedColumnName: "id" },
+  })
+  folders: Folder[];
 
   @JoinColumn({ name: "cd_categoria" })
   @ManyToOne(() => Category)
