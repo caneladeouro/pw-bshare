@@ -5,7 +5,7 @@ import projectView from "../views/ProjectView";
 
 class ProjectService {
   private projectRepository: Repository<Project>;
-  private relations = ["images", "category", "author"];
+  private relations = ["images", "category", "author", "folders"];
 
   constructor() {
     this.projectRepository = getCustomRepository(ProjectRepository);
