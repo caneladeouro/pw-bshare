@@ -9,9 +9,11 @@ import {
   PrimaryColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { BlenderVersion } from "./BlenderVersion";
 import { Category } from "./Category";
 import { Folder } from "./Folder";
 import { Image } from "./Image";
+import { RenderEngine } from "./RenderEngine";
 import { User } from "./User";
 
 @Entity("tb_projeto")
@@ -24,6 +26,15 @@ class Project {
 
   @Column({ name: "ds_projeto" })
   description: string;
+
+  @Column({ name: "ds_versao_blender" })
+  blender_version: string;
+
+  @Column({ name: "nm_render_endine" })
+  render_engine: string;
+
+  @Column({ name: "dt_postagem" })
+  post_date: string;
 
   @Column({ name: "im_principal" })
   main_image: string;
@@ -44,7 +55,7 @@ class Project {
   author_id: string;
 
   @JoinColumn({ name: "cd_usuario" })
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, (user) => user.projects)
   author: User;
 
   @ManyToMany(() => Folder)
