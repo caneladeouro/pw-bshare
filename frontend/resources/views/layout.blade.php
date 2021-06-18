@@ -12,7 +12,7 @@
 
 <head>
     <!--browser navbar icone-->
-    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon" />
 
     <!--Metatags-->
 
@@ -51,7 +51,7 @@
             <!--Logo-->
             <div class="header-container logo-container">
                 <a href="/">
-                    <img src="img/logo-white-full.png" class="logo">
+                    <img src="/img/logo-white-full.png" class="logo">
                 </a>
             </div>
             @show
@@ -66,10 +66,8 @@
                 </svg>
 
                 <div class="dropdown-content pesquisar">
-                    <form action="/pesquisar">
-                        <input type="text" placeholder="Pesquisar">
-                        <a href="/pesquisa" class="submit pesquisar-submit">></a>
-                    </form>
+                    <input type="text" id="search-bar-input" placeholder="Pesquisar">
+                    <button onclick="searchBar()" class="submit pesquisar-submit">></button>
                 </div>
             </div>
             <!--conta-->
@@ -161,6 +159,8 @@
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
+
+    <script src="/js/search-bar.js"></script>
 
     @yield('js')
 </body>
