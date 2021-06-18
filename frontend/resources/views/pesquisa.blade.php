@@ -3,8 +3,8 @@
 @section('css')
 
 <!--Stylesheets: 1-Bootstrap, 2-Própria-->
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
@@ -81,15 +81,15 @@ Pesquisa | BShare
             <a href="/projeto">
                 <div class="projeto-preview">
                     <p class="projeto-nome">
-                        {{ $project->title }}
+                        {{ $project["title"] }}
                     </p>
                     <a href="">
                         <p class="projeto-criador">
-                            {{ $project->author->username }}
+                            {{ $project["author"]["username"] }}
                         </p>
                     </a>
                     <p class="projeto-tipo">
-                        {{ $project->category->category }}
+                        {{ $project["category"]["category"] }}
                     </p>
                 </div>
             </a>
@@ -104,7 +104,7 @@ Pesquisa | BShare
 @section('js')
 
 <!-- JavaScript próprio-->
-<script src="js/menu.js"></script>
-<script src="js/preview-image.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/preview-image.js"></script>
 
 @stop
