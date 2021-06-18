@@ -1,5 +1,13 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Project } from "./Project";
 
 @Entity("tb_usuario")
 class User {
@@ -12,11 +20,18 @@ class User {
   @Column({ name: "nm_usuario" })
   username: string;
 
+  @Column({ name: "ds_usuario" })
+  description: string;
+
   @Column({ name: "cd_senha" })
   password: string;
 
   @Column({ name: "nm_email" })
   email: string;
+
+  @OneToMany(() => Project, (project) => project.author)
+  @JoinColumn({ name: "cd_usuario" })
+  projects: Project[];
 
   constructor() {
     if (!this.id) {

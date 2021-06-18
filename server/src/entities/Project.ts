@@ -1,5 +1,20 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuid } from "uuid";
+import { BlenderVersion } from "./BlenderVersion";
+import { Category } from "./Category";
+import { Folder } from "./Folder";
+import { Image } from "./Image";
+import { RenderEngine } from "./RenderEngine";
+import { User } from "./User";
 
 @Entity("tb_projeto")
 class Project {
@@ -11,6 +26,15 @@ class Project {
 
   @Column({ name: "ds_projeto" })
   description: string;
+
+  @Column({ name: "ds_versao_blender" })
+  blender_version: string;
+
+  @Column({ name: "nm_render_endine" })
+  render_engine: string;
+
+  @Column({ name: "dt_postagem" })
+  post_date: string;
 
   @Column({ name: "im_principal" })
   main_image: string;
@@ -25,7 +49,32 @@ class Project {
   active: boolean;
 
   @Column({ name: "cd_categoria" })
-  category: string;
+  category_id: string;
+
+  @Column({ name: "cd_usuario" })
+  author_id: string;
+
+  @JoinColumn({ name: "cd_usuario" })
+  @ManyToOne(() => User, (user) => user.projects)
+  author: User;
+
+  @ManyToMany(() => Folder)
+  @JoinTable({
+    name: "tb_pasta_projeto",
+    joinColumn: { name: "cd_projeto", referencedColumnName: "id" },
+    inverseJoinColumn: { name: "cd_pasta", referencedColumnName: "id" },
+  })
+  folders: Folder[];
+
+  @JoinColumn({ name: "cd_categoria" })
+  @ManyToOne(() => Category)
+  category: Category;
+
+  @JoinColumn({ name: "cd_projeto" })
+  @OneToMany(() => Image, (image) => image.project, {
+    cascade: ["insert", "update"],
+  })
+  images: Image[];
 
   constructor() {
     if (!this.id) {

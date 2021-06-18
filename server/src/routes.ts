@@ -15,21 +15,28 @@ const projectController = new ProjectController();
 
 // User
 router.get("/users", userController.showAll);
-router.get("/user/:id", userController.show);
-router.post("/user/log_in", userController.login);
-router.post("/user", userController.create);
+router.get("/users/:id", userController.show);
+router.post("/users/log_in", userController.login);
+router.post("/users", userController.create);
 
 // Folder
 router.get("/folders/:user_id", folderController.showAllByUser);
-router.get("/folder/:id/:user_id", folderController.showUserFolderContent);
-router.post("/folder", folderController.create);
+router.get("/folders/:id/:user_id", folderController.showUserFolderContent);
+router.post("/folders", folderController.create);
 
 // Projects
 router.get("/projects", projectController.showAll);
 router.post(
-  "/project",
-  upload.fields([{ name: "project" }]),
+  "/projects",
+  upload.fields([
+    { name: "project", maxCount: 1 },
+    { name: "main_image", maxCount: 1 },
+    { name: "images[]", maxCount: 3 },
+  ]),
   projectController.create
 );
+router.get("/projects/:id", projectController.showById);
+router.get("/projects/by_user/:author_id", projectController.showByUser);
+router.get("/projects/search/:attribute", projectController.showByAttribute);
 
 export default router;

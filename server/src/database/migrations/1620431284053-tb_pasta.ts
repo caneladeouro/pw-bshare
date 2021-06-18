@@ -17,26 +17,6 @@ export class tbPasta1620431284053 implements MigrationInterface {
             type: "varchar",
             length: "60",
           },
-          {
-            name: "cd_usuario",
-            type: "char",
-            length: "36",
-          },
-          {
-            name: "cd_carrinho",
-            type: "char",
-            length: "36",
-            isNullable: true,
-          },
-        ],
-        foreignKeys: [
-          {
-            name: "fk_tb_usuario_tb_pasta",
-            columnNames: ["cd_usuario"],
-            referencedTableName: "tb_usuario",
-            referencedColumnNames: ["cd_usuario"],
-            onUpdate: "CASCADE",
-          },
         ],
       })
     );

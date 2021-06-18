@@ -6,7 +6,7 @@
   "description": "backend from bshare application",
   "author": "Matheus dos Santos Bonifacio <caneladeouro10@gmail.com>",
   "scripts": {
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/main.ts",
+    "dev": "ts-node-dev --inspect=0.0.0.0:9229 --transpile-only --ignore-watch node_modules src/main.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "build": "tsc"
   },

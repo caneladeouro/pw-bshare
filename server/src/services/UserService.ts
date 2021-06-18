@@ -2,6 +2,7 @@ import { getCustomRepository, Repository } from "typeorm";
 import { User } from "../entities/User";
 import { UserRepository } from "../repositorys/UserRepository";
 import { createHash } from "crypto";
+import userView from "../views/UserView";
 
 class UserService {
   private userRepository: Repository<User>;
@@ -16,7 +17,7 @@ class UserService {
     });
 
     if (userAlreadyExist) {
-      return;
+      return userAlreadyExist;
     }
 
     password = createHash("sha256").update(password).digest("hex");
@@ -32,17 +33,24 @@ class UserService {
   }
 
   async showAll() {
-    const users = await this.userRepository.find();
+    const users = await this.userRepository.find({ relations: ["projects"] });
 
-    return users;
+    return userView.renderMany(users);
   }
 
   async show(id: string) {
     const user = await this.userRepository.findOne({
-      id,
+      where: { id },
+      relations: [
+        "projects",
+        "projects.images",
+        "projects.category",
+        "projects.author",
+        "projects.folders",
+      ],
     });
 
-    return user;
+    return userView.render(user, true);
   }
 
   async login(name_our_email: string, password: string) {
@@ -53,9 +61,16 @@ class UserService {
         { username: name_our_email, password },
         { email: name_our_email, password },
       ],
+      relations: [
+        "projects",
+        "projects.images",
+        "projects.category",
+        "projects.author",
+        "projects.folders",
+      ],
     });
 
-    return user;
+    return userView.render(user, true);
   }
 }
 

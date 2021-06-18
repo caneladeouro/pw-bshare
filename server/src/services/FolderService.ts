@@ -9,7 +9,7 @@ class FolderService {
     this.folderRepository = getCustomRepository(FolderRepository);
   }
 
-  async create({ path, user_id, card_id }: IFolder) {
+  async create({ path }: IFolder) {
     const folderAlreadyExist = await this.folderRepository.findOne({
       path,
     });
@@ -20,25 +20,15 @@ class FolderService {
 
     const folder = this.folderRepository.create({
       path,
-      user_id,
-      card_id,
     });
 
     await this.folderRepository.save(folder);
     return folder;
   }
 
-  async showAllByUser(user_id: string) {
-    const folders = await this.folderRepository.find({
-      user_id,
-    });
-
-    return folders;
-  }
-
-  async showUserFolderContent({ id, user_id }: IFolder) {
+  async showFolderContent({ id }: IFolder) {
     const folder = await this.folderRepository.findOne({
-      where: { id, user_id },
+      where: { id },
     });
 
     return folder;

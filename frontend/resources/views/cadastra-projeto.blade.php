@@ -3,8 +3,8 @@
 @section('css')
 
 <!--Stylesheets: 1-Bootstrap, 2-Própria-->
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
@@ -94,7 +94,7 @@ Criar Projeto | BShare
                     </select>
                     <br><br>
                     Versão do Blender: <br>
-                    <select name="versao-blender" id="versao-blender">
+                    <select name="versao_blender" id="versao-blender">
                         <option value="2.9x">2.9x</option>
                         <option value="2.8x">2.8x</option>
                         <option value="2.7x">2.7x</option>
@@ -102,7 +102,7 @@ Criar Projeto | BShare
                     </select>
                     <br><br>
                     Render Engine: <br>
-                    <select name="render-engine" id="render-engine">
+                    <select name="render_engine" id="render-engine">
                         <option value="Cycles">Cycles</option>
                         <option value="Eevee">Eevee</option>
                         <option value="Workbench">Workbench</option>
@@ -154,7 +154,7 @@ Criar Projeto | BShare
 @section('js')
 
 <!-- JavaScript próprio-->
-<script src="js/menu.js"></script>
-<script src="js/preview-image.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/preview-image.js"></script>
 
 @stop
