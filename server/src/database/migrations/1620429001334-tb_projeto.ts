@@ -24,9 +24,24 @@ export class tbProjeto1620429001334 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: "ds_versao_blender",
+            type: "varchar",
+            length: "40",
+          },
+          {
+            name: "nm_render_endine",
+            type: "varchar",
+            length: "60",
+          },
+          {
+            name: "dt_postagem",
+            type: "time",
+          },
+          {
             name: "im_principal",
             type: "varchar",
             length: "60",
+            isNullable: true,
           },
           {
             name: "vl_preco_projeto",
