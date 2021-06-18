@@ -5,16 +5,18 @@ class ProjectController {
   async create(req: Request, res: Response) {
     const projectService = new ProjectService();
     const requestFiles = req.files as Express.Multer.File[];
-    const images = requestFiles["images[]"].map(
-      (image: Express.Multer.File) => {
-        return { image: image.filename };
-      }
-    );
+    const images = requestFiles["images[]"]
+      ? requestFiles["images[]"].map((image: Express.Multer.File) => {
+          return { image: image.filename };
+        })
+      : [];
     const project = await projectService.create({
       ...req.body,
       images,
       project: requestFiles["project"][0].filename,
-      main_image: requestFiles["main_image"][0].filename,
+      main_image: requestFiles["main_image"]
+        ? requestFiles["main_image"][0].filename
+        : undefined,
     });
 
     return res.status(201).json(project);
@@ -39,6 +41,15 @@ class ProjectController {
     const { author_id } = req.params;
     const projectService = new ProjectService();
     const projects = await projectService.showByUser(author_id);
+
+    return res.status(200).json(projects);
+  }
+
+  async showByAttribute(req: Request, res: Response) {
+    const { attribute } = req.params;
+    const projectService = new ProjectService();
+    console.log(attribute);
+    const projects = await projectService.showByAttibute(attribute);
 
     return res.status(200).json(projects);
   }
