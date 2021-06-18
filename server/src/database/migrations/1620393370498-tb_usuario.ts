@@ -13,6 +13,12 @@ export class tbUsuario1620393370498 implements MigrationInterface {
             isPrimary: true,
           },
           {
+            name: "ds_usuario",
+            type: "varchar",
+            length: "250",
+            isNullable: true,
+          },
+          {
             name: "im_capa",
             type: "varchar",
             length: "60",
