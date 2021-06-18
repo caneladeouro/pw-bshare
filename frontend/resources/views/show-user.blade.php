@@ -3,8 +3,8 @@
 @section('css')
 
 <!--Stylesheets: 1-Bootstrap, 2-Própria-->
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
@@ -31,7 +31,7 @@ MYSELF | BShare
                     <div class="col-sm-10">
                         <div class="row">
                             <h3 style="margin-left: 0; margin-right: 5px;">
-                                {{ $data->username }}
+                                {{ $data["username"] }}
                             </h3>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--textcolor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2" style="margin-left: 20px;">
                                 <circle cx="18" cy="5" r="3" />
@@ -45,9 +45,7 @@ MYSELF | BShare
                         </div>
 
                         <div class="">
-                            @isset($data->biografy)
-                            {{ $data->biografy }}
-                            @endisset
+                            {{ $data["description"] }}
                         </div>
                     </div>
                 </div>
@@ -64,28 +62,26 @@ MYSELF | BShare
                 <a href="#" class="m-3">see more</a>
             </div>
 
-            <div>
-                @isset($data->created_projects)
-                @foreach(array_slice($data->created_projects, 0, 4) as $created_project)
-                <div class="col-sm-3">
-                    <a href="#">
+            <div class="row row-col-4">
+                @foreach(array_slice($data["created_projects"], 0, 4) as $created_project)
+                <div class="col">
+                    <a href="http://127.0.0.1:3000/projeto/{{ $created_project['id'] }}">
                         <div class="projeto-preview">
                             <p class="projeto-nome">
-                                {{ $created_project->title }}
+                                {{ $created_project["title"] }}
                             </p>
                             <a href="">
                                 <p class="projeto-criador">
-                                    {{ $created_project->author->username }}
+                                    {{ $created_project["author"]["username"] }}
                                 </p>
                             </a>
                             <p class="projeto-tipo">
-                                {{ $created_project->category->category }}
+                                {{ $created_project["category"]["category"] }}
                             </p>
                         </div>
                     </a>
                 </div>
                 @endforeach
-                @endisset
             </div>
         </div>
 
@@ -97,13 +93,14 @@ MYSELF | BShare
                 <a href="/pasta" class="m-3">see more</a>
             </div>
 
-            @isset($data->folders)
-            @foreach($data->folders as $folder)
+
+            @isset($data["folders"])
+            @foreach($data["folders"] as $folder)
             <div class="col-sm-3">
                 <a href="#">
                     <div class="projeto-preview">
                         <p class="projeto-nome">
-                            {{ $folder->path }}
+                            {{ $folder["path"] }}
                         </p>
                     </div>
                 </a>
