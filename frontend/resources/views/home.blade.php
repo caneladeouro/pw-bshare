@@ -36,18 +36,18 @@ HOME | BShare
                             <!--cada um desses eh o preview de um projeto diferente-->
                             @foreach(array_slice($main_projects, 0, 4) as $main_project)
                             <div class="col">
-                                <a href="">
+                                <a href="http://127.0.0.1:3000/projeto/{{ $main_project['id'] }}">
                                     <div class="projeto-preview">
                                         <p class="projeto-nome">
-                                            {{ $main_project->title }}
+                                            {{ $main_project["title"] }}
                                         </p>
                                         <a href="">
                                             <p class="projeto-criador">
-                                                {{ $main_project->author->username }}
+                                                {{ $main_project["author"]["username"] }}
                                             </p>
                                         </a>
                                         <p class="projeto-tipo">
-                                            {{ $main_project->category->category }}
+                                            {{ $main_project["category"]["category"] }}
                                         </p>
                                     </div>
                                 </a>
@@ -63,18 +63,18 @@ HOME | BShare
                             <!--cada um desses eh o preview de um projeto diferente-->
                             @foreach(array_slice($main_projects, 4, 8) as $main_project)
                             <div class="col">
-                                <a href="">
+                                <a href="http://127.0.0.1:3000/projeto/{{ $main_project['id'] }}">
                                     <div class="projeto-preview">
                                         <p class="projeto-nome">
-                                            {{ $main_project->title }}
+                                            {{ $main_project["title"] }}
                                         </p>
                                         <a href="">
                                             <p class="projeto-criador">
-                                                {{ $main_project->author->username }}
+                                                {{ $main_project["author"]["username"] }}
                                             </p>
                                         </a>
                                         <p class="projeto-tipo">
-                                            {{ $main_project->category->category }}
+                                            {{ $main_project["category"]["category"] }}
                                         </p>
                                     </div>
                                 </a>
@@ -99,18 +99,18 @@ HOME | BShare
                     <!--cada um desses eh o preview de um projeto diferente-->
                     @foreach($projects as $project)
                     <div class="col">
-                        <a href="/projeto">
+                        <a href="http://127.0.0.1:3000/projeto/{{ $project['id'] }}">
                             <div class="projeto-preview">
                                 <p class="projeto-nome">
-                                    {{ $project->title }}
+                                    {{ $project["title"] }}
                                 </p>
-                                <a href="">
+                                <a href="http://127.0.0.1:3000/showAuthor/{{ $project['author']['id'] }}">
                                     <p class="projeto-criador">
-                                        {{ $project->author->username }}
+                                        {{ $project["author"]["username"] }}
                                     </p>
                                 </a>
                                 <p class="projeto-tipo">
-                                    {{ $project->category->category }}
+                                    {{ $project["category"]["category"] }}
                                 </p>
                             </div>
                         </a>
