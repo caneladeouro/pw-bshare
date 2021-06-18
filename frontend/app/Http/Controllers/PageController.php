@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PageController extends Controller
 {
@@ -10,209 +11,16 @@ class PageController extends Controller
 
     public function __construct()
     {
-        $this->backend = getenv('Webservice_HOST');
+        $this->backend = getenv('Webservice_HOST') . ":3100";
     }
 
     public function home()
     {
-        return view('home', ["projects" => [
-            (object) [
-                "title" => "first-project",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Paulo Santos"
-                ]
-            ],
-            (object) [
-                "title" => "caneca",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "carro",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Catarina Dimanhares"
-                ]
-            ],
-            (object) [
-                "title" => "parede",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Catarina Dimanhares"
-                ]
-            ],
-            (object) [
-                "title" => "aviao",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Catarina Dimanhares"
-                ]
-            ],
-            (object) [
-                "title" => "first-project",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "meteoro",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "colher",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Tiago Renantes"
-                ]
-            ],
-        ], "main_projects" => [
-            (object) [
-                "title" => "first-project",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Paulo Santos"
-                ]
-            ],
-            (object) [
-                "title" => "caneca",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "carro",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Catarina Dimanhares"
-                ]
-            ],
-            (object) [
-                "title" => "parede",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Catarina Dimanhares"
-                ]
-            ],
-            (object) [
-                "title" => "aviao",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Catarina Dimanhares"
-                ]
-            ],
-            (object) [
-                "title" => "first-project",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "meteoro",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "colher",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Tiago Renantes"
-                ]
-            ],
-        ]]);
+        $res = Http::get("http://$this->backend/projects");
+        $projects = $res->json();
 
-        $ch = curl_init("http://$this->backend/projects");
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        $result = json_decode(curl_exec($ch));
-
-        // If not exist error from curl display the projects
-        if (!curl_errno($ch)) {
-            $info = curl_getinfo($ch);
-
-            // If not exist from server display the projects
-            if ($info['http_code'] == 200) {
-                return view('home', ["data" => [$result]]);
-            } else {
-                abort(500);
-            }
-        } else {
-            abort(500);
-        }
+        // die($res->body());
+        return view('home', ["projects" => $res->json(), "main_projects" => array_slice($projects, 0, 8)]);
     }
 
     public function signProject()
@@ -229,121 +37,26 @@ class PageController extends Controller
         return view('cadastra-pasta');
     }
 
-    public function projeto()
+    public function projeto($id)
     {
-        return view('projeto', ["project" => 
-                (object) [
-                    "title" => "first-project",
-                    "category" => (object) [
-                        "id" => "test",
-                        "category" => "contruction"
-                    ],
-                    "author" => (object) [
-                        "id" => "test",
-                        "username" => "Paulo Santos"
-                    ]
-                ]
-            ],
+        $res = Http::get("http://$this->backend/projects/$id");
+
+        return view(
+            'projeto',
+            ["project" => $res->json(), "main_image" => "main_image", "image_field" => "image", "id" => "id"],
         );
     }
-    
+
     public function pasta()
     {
         return view('pasta');
     }
 
-    public function pesquisa()
+    public function pesquisa($attribute)
     {
-        return view('pesquisa', ["projects" => [
-            (object) [
-                "title" => "first-project",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Paulo Santos"
-                ]
-            ],
-            (object) [
-                "title" => "caneca",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "carro",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Catarina Dimanhares"
-                ]
-            ],
-            (object) [
-                "title" => "parede",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Catarina Dimanhares"
-                ]
-            ],
-            (object) [
-                "title" => "aviao",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Catarina Dimanhares"
-                ]
-            ],
-            (object) [
-                "title" => "first-project",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "meteoro",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Matheus Farbiano"
-                ]
-            ],
-            (object) [
-                "title" => "colher",
-                "category" => (object) [
-                    "id" => "test",
-                    "category" => "Modelo 3D"
-                ],
-                "author" => (object) [
-                    "id" => "test",
-                    "username" => "Tiago Renantes"
-                ]
-            ],
-        ]]);
+        $res = Http::get("http://$this->backend/projects/search/$attribute");
+
+        return view('pesquisa', ["projects" => $res->json()]);
     }
 
     public function login()
@@ -386,7 +99,7 @@ class PageController extends Controller
 
             if ($info['http_code'] == 200) {
                 if ($result != null) {
-                    session(["user" => $result]);
+                    session(["user" => json_decode(json_encode($result), true)]);
                     return redirect('/');
                 } else {
                     return redirect('/login');
@@ -422,7 +135,7 @@ class PageController extends Controller
 
             if ($info['http_code'] == 200) {
                 if ($result != null) {
-                    session(["user" => $result]);
+                    session(["user" => json_decode(json_encode($result), true)]);
                     return redirect('/');
                 } else {
                     return redirect('/login');
@@ -437,82 +150,32 @@ class PageController extends Controller
 
     public function storageProject(Request $req)
     {
-        return redirect('/');
-
         $headers = ["Content-type:multipart/form-data"];
 
-        $data = [
+        $res = Http::attach("project", $req->project->path(), "test.blend")->post("http://$this->backend/projects", [
             "title" => $req->title,
-            "price" => $req->price,
-            "ageClassification" => 10,
-            "category" => $req->category,
-            "author" => (json_decode(session()->get('user')))->code,
             "description" => $req->description,
-            "tags" => explode(',', $req),
-            "project" => $req->project->path(),
-            "mainImage" => $req->mainImage->path()
-        ];
+            "price" => $req->price,
+            "category" => $req->category,
+            "blender_version" => $req->versao_blender,
+            "render_engine" => $req->render_engine,
+            "category_id" => "24b88498-5e8b-3014-bb80-bdc0e11a9702",
+            "author_id" => session()->get('user')["id"]
+        ]);
 
-        $options = [
-            CURLOPT_POST => 1,
-            CURLOPT_POSTFIELDS => $data,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_HTTPHEADER => $headers
-        ];
-
-        $ch = curl_init("http://$this->backend/project");
-        @curl_setopt_array($ch, $options);
-
-        $result = curl_exec($ch);
-
-        // If exist error redirec /
-        if (!curl_errno($ch)) {
-            $info = curl_getinfo($ch);
-
-            // If exist the server error redirect /
-            if ($info['http_code'] == 200) {
-
-                // If can't register project redirect /projeto
-                if ($result != null) {
-                    session(["user" => $result]);
-                    return redirect('/');
-                } else {
-                    abort(500);
-                }
-            } else {
-                abort(500);
-            }
-        } else {
-            abort(500);
-        }
+        return redirect('/');
     }
 
     public function showUser()
     {
+        $res = Http::get("http://$this->backend/users/" . session()->get('user')["id"]);
+        session(["user" => $res->json()]);
         return view('show-user', ["data" => session()->get('user')]);
-        // return view('show-user', ["data" => (object) [
-        //     "username" => "Matheus Farbiano",
-        //     "email" => "matheus.test01@gmail.com",
-        //     "biografy" => "Clita ut aliquyam est labore justo eirmod accusam no sea sanctus, lorem magna et vero justo sit stet diam amet, gubergren consetetur diam sanctus stet consetetur, dolor consetetur dolor amet justo, no sed magna vero diam est consetetur rebum tempor, amet vero voluptua lorem sadipscing ut, lorem eirmod et eos.",
-        //     "created_projects" => [
-        //         (object) [
-        //             "title" => "first-project",
-        //             "category" => (object) [
-        //                 "id" => "test",
-        //                 "category" => "contruction"
-        //             ],
-        //             "author" => (object) [
-        //                 "id" => "test",
-        //                 "username" => "Matheus Farbiano"
-        //             ]
-        //         ]
-        //     ],
-        //     "folders" => [
-        //         (object) [
-        //             "id" => "test",
-        //             "path" => "first-projects"
-        //         ]
-        //     ]
-        // ]]);
+    }
+
+    public function showAuthor($id)
+    {
+        $res = Http::get("http://$this->backend/users/" . $id);
+        return view('show-user', ["data" => $res->json()]);
     }
 }
