@@ -21,62 +21,43 @@ Login & Cadastro | BShare
 
 <!-- O código resposável pelo main está no -->
 <section>
-  <div class="login-container">
-    <!-- Login form -->
-    <div class="login-c">
-      <h2>Login</h2>
-      <form id="form-login" class="login" method="POST" action="/login">
-        @csrf
+  <main>
+    <div class="login-container">
+      <!-- Login form -->
+      <div class="login-c">
+        <h2>Login</h2>
+        <form id="form-login" class="login" method="POST" action="/login">
+          @csrf
 
-        <label for="nameOurEmail" id="label-verify"></label>
-        <br />
-        <input type="text" name="nameOurEmail" placeholder="Usuário ou E-mail" maxlength="50" required />
-        <br />
-        <input type="password" name="password" placeholder="Senha" maxlength="30" required />
-        <br />
-        <input value="Entrar" class="submit" type="submit" />
-      </form>
-    </div>
-
-    <!-- Register user form -->
-    <!-- O código resposável pelo main está no -->
-    <main>
-      <div class="login-container">
-        <!-- Login form -->
-        <div class="login-c">
-          <h2>Login</h2>
-          <form id="form-login" class="login" method="POST" action="/login">
-            @csrf
-
-            <label for="nameOurEmail" id="label-verify"></label>
-            <br />
-            <input type="text" name="nameOurEmail" placeholder="Usuário ou E-mail" maxlength="50" required />
-            <br />
-            <input type="password" name="password" placeholder="Senha" maxlength="30" required />
-            <br />
-            <input value="Entrar" class="submit" type="submit" />
-          </form>
-        </div>
-
-        <!-- Register user form -->
-        <div class="cadastro-c">
-          <h2>Cadastro</h2>
-          <form action="/signUser" class="cadastro" method="POST" id="formRegisterUser">
-            @csrf
-
-            <input type="text" name="name" id="usuario" placeholder="Usuário" maxlength="50" required />
-            <br />
-            <input type="password" name="password" id="password" placeholder="Senha" minlength="8" maxlength="36" required />
-            <br />
-            <input type="password" id="confirmPassword" placeholder="Confirmar senha" minlength="8" maxlength="36" required />
-            <br />
-            <input type="text" name="email" id="email" placeholder="E-mail" maxlength="50" required />
-            <br />
-            <input onclick="validateRegister()" value="Cadastrar" class="submit" type="submit" />
-          </form>
-        </div>
+          <label for="nameOurEmail" id="label-verify"></label>
+          <br />
+          <input type="text" name="nameOurEmail" placeholder="Usuário ou E-mail" maxlength="50" required />
+          <br />
+          <input type="password" name="password" placeholder="Senha" maxlength="30" required />
+          <br />
+          <input value="Entrar" class="submit" type="submit" />
+        </form>
       </div>
-  </div>
+
+      <!-- Register user form -->
+      <div class="cadastro-c">
+        <h2>Cadastro</h2>
+        <form action="/signUser" class="cadastro" method="POST" id="formRegisterUser">
+          @csrf
+
+          <input type="text" name="name" id="usuario" placeholder="Usuário" maxlength="50" required />
+          <br />
+          <input type="password" name="password" id="password" placeholder="Senha" minlength="8" maxlength="36" required />
+          <br />
+          <input type="password" id="confirmPassword" placeholder="Confirmar senha" minlength="8" maxlength="36" required />
+          <br />
+          <input type="text" name="email" id="email" placeholder="E-mail" maxlength="50" required />
+          <br />
+          <input onclick="validateRegister()" value="Cadastrar" class="submit" type="submit" />
+        </form>
+      </div>
+    </div>
+  </main>
 </section>
 
 @stop
