@@ -37,5 +37,6 @@ router.post(
 );
 router.get("/projects/:id", projectController.showById);
 router.get("/projects/by_user/:author_id", projectController.showByUser);
+router.get("/projects/search/:attribute", projectController.showByAttribute);
 
 export default router;
