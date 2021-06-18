@@ -23,15 +23,16 @@ Route::get('/logoff', [PageController::class, 'logoff']);
 Route::get('/myself', [PageController::class, 'showUser']);
 Route::post('/login', [PageController::class, 'verifyUser']);
 Route::post('/signUser', [PageController::class, 'storageUser']);
+Route::get('/showAuthor/{id}', [PageController::class, 'showAuthor']);
 
 // Project
 Route::get('/signProject', [PageController::class, 'signProject']);
 Route::post('/signProject', [PageController::class, 'storageProject']);
-Route::get('/projeto', [PageController::class, 'projeto']);
+Route::get('/projeto/{id}', [PageController::class, 'projeto']);
 
 
 // Pesquisa
-Route::get('/pesquisa', [PageController::class, 'pesquisa']);
+Route::get('/pesquisa/{attribute}', [PageController::class, 'pesquisa']);
 
 // Pasta
 Route::get('/pasta', [PageController::class, 'pasta']);
